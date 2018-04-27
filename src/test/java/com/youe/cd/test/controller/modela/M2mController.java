@@ -10,12 +10,15 @@ import com.youe.cd.test.util.testbase.TestBase;
 import com.youe.cd.test.util.verify.Verify;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class M2mController extends TestBase {
     String nowTimeStr = DateUtil.getDateLite();
     String dataSourceName = "uitest源forMysql_" + nowTimeStr;
+
+
 
     @Test(priority = 1, enabled = true, description = "创建表数据源")
     public void runTestCreateDataSource() {
@@ -57,7 +60,11 @@ public class M2mController extends TestBase {
             Thread.sleep(3000);
 
             driver.findElement(By.xpath("//a[@class='confirm']")).click();
-            Thread.sleep(3000);
+            Thread.sleep(5000);
+
+            boolean actualElement= ElementAction.isElementPresent(driver,By.xpath("//div[text()='" + dataSourceName + "']"));
+
+            Assert.assertTrue(actualElement);
 
         } catch (Exception e) {
             //e.printStackTrace();
@@ -68,6 +75,10 @@ public class M2mController extends TestBase {
 
     @Test(priority = 1, enabled = true, description = "表到表流程")
     public void runTestM2mflow() {
+        String nowTimeEssential = DateUtil.getDateLiteEssential();
+        String dataSetName = "UITest集_" + nowTimeEssential;
+        String taskName = "uitaskm2m_" + nowTimeEssential;
+
         try {
             Thread.sleep(2000);
             driver.findElement(By.xpath("//*[@id='115']")).click();
@@ -92,23 +103,22 @@ public class M2mController extends TestBase {
             driver.findElement(By.xpath("//a[@class='confirm']")).click();
             Thread.sleep(5000);
 
-            driver.findElement(By.xpath("//div[text()='testtab22']/../../td[1]")).click();
+            driver.findElement(By.xpath("//div[text()='testtable']/../../td[1]")).click();
             //driver.findElement(By.xpath("//div[contains(text(),'baidu_tieba_20000item')]")).findElement(By.xpath("./../../td[1]/div/label/span")).click();
             Thread.sleep(5000);
 
             driver.findElement(By.xpath("//input[@placeholder='请选择业务组']")).click();
             Thread.sleep(2000);
-            driver.findElement(By.xpath("//span[text()='中国电子']")).click();
+            driver.findElement(By.xpath("//span[text()='成都优易']")).click();
             Thread.sleep(1000);
 
-            String dataSetName = "UITest集_" + nowTimeStr;
             driver.findElement(By.xpath("//input[@placeholder='请输入内容']")).sendKeys(dataSetName);
             Thread.sleep(3000);
 
             driver.findElement(By.xpath("//div[contains(text(),'下一步')]")).click();
             Thread.sleep(3000);
 
-            driver.findElement(By.xpath("//form/div/div/div[2]/input")).sendKeys("tabui2_");
+            driver.findElement(By.xpath("//form/div/div/div[2]/input")).sendKeys("tab_" + nowTimeEssential);
             driver.findElement(By.xpath("//a[@class='confirm']")).click();
             Thread.sleep(3000);
 
@@ -117,7 +127,6 @@ public class M2mController extends TestBase {
             driver.findElement(By.xpath("//div[@class='submit' and contains(text(),'提交')]")).click();
             Thread.sleep(3000);
 
-            String taskName = "uitaskm2m" + nowTimeStr;
             driver.findElement(By.xpath("//label[contains(text(),'任务名称')]/../div/div/input")).sendKeys(taskName);
             driver.findElement(By.xpath("//label[text()='采集周期']/../div/div/div/input")).click();
             Thread.sleep(2000);
@@ -142,15 +151,17 @@ public class M2mController extends TestBase {
             Thread.sleep(1000);
             driver.findElement(By.xpath("//a[text()='数据集列表']")).click();
             Thread.sleep(2000);
+            //Actions a = new Actions(driver);
+            //a.moveToElement(driver.findElement(By.xpath("//span[text()='" + dataSetName + "']/../../../../td[9]/div/div/span"))).perform();
             driver.findElement(By.xpath("//span[text()='" + dataSetName + "']/../../../../td[9]/div/div/span")).click();
             Thread.sleep(1000);
-            driver.findElement(By.xpath("//ul[not(contains(@style,'display: none'))]/li[text()='编辑']")).click();
+            driver.findElement(By.xpath("//ul[not(contains(@style,'display: none'))]/li[contains(text(),'编辑')]")).click(); //注意编辑部分有多余空字符，所以要用contains
             Thread.sleep(3000);
             driver.findElement(By.xpath("//div[text()='数据查看']")).click();
             Thread.sleep(3000);
 
-            String expectedRows = driver.findElement(By.xpath("//header[conations(text(),'行数：')]/span")).getText();
-            Assert.assertEquals(expectedRows, "3");
+            String actualNum = driver.findElement(By.xpath("//header[contains(text(),'行数：')]/span")).getText();
+            Assert.assertEquals(actualNum, "3");
 
         } catch (Exception e) {
             //e.printStackTrace();
