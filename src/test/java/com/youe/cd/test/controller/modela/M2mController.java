@@ -18,8 +18,6 @@ public class M2mController extends TestBase {
     String nowTimeStr = DateUtil.getDateLite();
     String dataSourceName = "uitest源forMysql_" + nowTimeStr;
 
-
-
     @Test(priority = 1, enabled = true, description = "创建表数据源")
     public void runTestCreateDataSource() {
         try {
