@@ -20,6 +20,14 @@ public class DateUtil {
         return sdf.format(date);
     }
 
+    public static String getDateLiteEssential() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMddHHmmss");
+        //System.out.println("Current date is: " + sdf.format(date));
+
+        return sdf.format(date);
+    }
+
     public static String getAfterDate(long afterTime) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
