@@ -132,8 +132,8 @@ public class ElementAction extends BaseAction {
     }
 
     public static void alertConfirm(WebDriver driver) {
-        Alert alert= driver.switchTo().alert();
         try {
+            Alert alert= driver.switchTo().alert();
             alert.accept();
             logger.info("Alert确认成功");
         } catch (NoAlertPresentException e) {
@@ -143,8 +143,8 @@ public class ElementAction extends BaseAction {
     }
 
     public static void alertDismiss(WebDriver driver) {
-        Alert alert= driver.switchTo().alert();
         try {
+            Alert alert= driver.switchTo().alert();
             alert.dismiss();
             logger.info("Alert取消成功");
         } catch (NoAlertPresentException e) {
