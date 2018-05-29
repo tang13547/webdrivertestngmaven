@@ -30,6 +30,7 @@ import java.util.ArrayList;
 
 //import java.util.HashSet;
 import org.openqa.selenium.interactions.Actions; //使用Actions类处理moveToElement()
+import org.testng.Assert;
 
 
 public class WebTest {
@@ -74,7 +75,7 @@ public class WebTest {
   }
 
   //@Test
-  public static void login(WebDriver driver,String baseUrl) throws Exception {
+  /*5public static void login(WebDriver driver,String baseUrl) throws Exception {
     driver.get(baseUrl);  //打开网页首页
     //driver.findElement(By.xpath(".//*[@id='u1']/a[7]")).click(); //点击"登录”链接打开登录窗口
     
@@ -109,7 +110,7 @@ public class WebTest {
 	    LoginPage.getSubmitElement(driver).click();	    
 	    Thread.sleep(5000);
 	    
-	  }
+  }
   
   public static void loginByCsv(WebDriver driver,String baseUrl,String csvFilePath) throws Exception {        
   	  	ArrayList<String[]> csvList = new ArrayList<String[]>();
@@ -150,22 +151,24 @@ public class WebTest {
 	    LoginPage.getSubmitElement(driver).click();	    
 	    Thread.sleep(5000);
 	    
-  }
+  }*/
   
-  public static void loginByExcel(WebDriver driver,String baseUrl, String excelFilePath) throws Exception {
+  public static void loginByExcel(WebDriver driver, String baseUrl, String excelFilePath) throws Exception {
 	  	//Sheet excelSheet = null;
 	  	//excelSheet = PoiExcelDao.getExcelSheet(excelFilePath);  //通过Dao层读取excel文件
 	 	    
 	    driver.get(baseUrl);  //打开网页首页
 	    //driver.findElement(By.xpath(".//*[@id='u1']/a[7]")).click();
-    
-	    LoginPage.getUserNameElement(driver).clear();
-	    LoginPage.getUserNameElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
+
+	    LoginPage loginPage = new LoginPage();
+
+	    loginPage.getUserNameElement(driver).clear();
+	    loginPage.getUserNameElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
 	    
-	    LoginPage.getPasswordElement(driver).clear();
-	    LoginPage.getPasswordElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
+	    loginPage.getPasswordElement(driver).clear();
+	    loginPage.getPasswordElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
 	    
-	    LoginPage.getSubmitElement(driver).click();	    
+	    loginPage.getSubmitElement(driver).click();
 	    Thread.sleep(5000);
 	    
 }
@@ -184,7 +187,7 @@ public class WebTest {
 
 	}
   
-  public static void loginWithVerifyCodeByExcel(WebDriver driver,String baseUrl,String excelFilePath) throws Exception {        
+  /*5public static void loginWithVerifyCodeByExcel(WebDriver driver,String baseUrl,String excelFilePath) throws Exception {
 	  	//Sheet excelSheet = null;
 	  	//excelSheet = PoiExcelDao.getExcelSheet(excelFilePath, 0);  //通过Dao层读取excel文件
 	 	    
@@ -205,7 +208,7 @@ public class WebTest {
 	    LoginPage.getSubmitElement(driver).click();	    
 	    Thread.sleep(5000);
 	    
-  }
+  }*/
   
   /**
    * 通过Cookie登陆
@@ -274,6 +277,12 @@ public class WebTest {
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);
     }
+  }
+
+  public static void handleException(Exception e) {
+	  logger.error("[logger] 异常信息为：", e);
+	  //Assert.assertTrue(false);
+	  throw new AssertionError(e);
   }
   
 }
