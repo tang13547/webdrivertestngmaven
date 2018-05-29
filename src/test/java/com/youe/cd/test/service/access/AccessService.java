@@ -6,14 +6,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AccessService {
-    public static void createTaskFlow(WebDriver driver, String dataSourceName, String dataSetName, String taskName, String nowTimeEssential) throws Exception {
+    public void createTaskFlow(WebDriver driver, String dataSourceName, String dataSetName, String taskName, String nowTimeEssential) throws Exception {
         driver.findElement(By.xpath("//span[contains(text(),'新建任务')]")).click();
         //driver.findElement(By.xpath("/html/body/section/section/section/main/div[2]/div/div[2]/form/div[1]/div/div/div[1]/input")).click();
         //driver.findElement(By.xpath("//label[text()='数据源类型']/../div/div/div/span/span/i")).click();
         driver.findElement(By.xpath("//input[@placeholder='请选择数据源类型']")).click();
         Thread.sleep(2000);
         //driver.findElement(By.xpath("//span[text()='MYSQL']")).click();
-        ElementAction.clickBySpanText(driver, "MYSQL");
+        //ElementAction.clickBySpanText(driver, "MYSQL");
+        driver.findElement(By.xpath("//div[not(contains(@style,'display: none'))]/div/div/ul/li/span[text()='MYSQL']")).click();
         Thread.sleep(2000);
         //driver.findElement(By.xpath("/html/body/section/section/section/main/div[2]/div/div[2]/form/div[2]/div/div/div[1]/input")).click();
         driver.findElement(By.xpath("//label[text()='数据源名称']/../div/div/div/span/span")).click();
@@ -49,7 +50,8 @@ public class AccessService {
         Thread.sleep(3000);
 
         driver.findElement(By.xpath("//label[contains(text(),'任务名称')]/../div/div/input")).sendKeys(taskName);
-        driver.findElement(By.xpath("//label[text()='采集周期']/../div/div/div/input")).click();
+
+        driver.findElement(By.xpath("//label[text()='任务周期']/../div/div/div/input")).click();
         Thread.sleep(2000);
         driver.findElement(By.xpath("//span[text()='小时']")).click();
         Thread.sleep(1000);

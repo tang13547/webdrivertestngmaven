@@ -235,14 +235,15 @@ public class EasyOcrDao {
 	public static String getAndInputCorrectVerifyCode(WebDriver driver, WebElement element, String picFilePath, String picFilePathAfterClean) throws Exception {
 	    String verifyCode = null;
 	    boolean flag = true;
+	    LoginPage loginPage = new LoginPage();
 
-	    while(flag) {
+	    /*5while(flag) {
 		    //String verifyCode = TesseractOcrDao.getVerifyCode(driver, element, Config.picFilePath, Config.txtResultFilePath); //通过Dao层(TesseractOcrDao)获取验证码。注意必须在打开登录页面后使用
 		    verifyCode = getTempVerifyCode(driver, element, Config.picFilePath, Config.picFileDirAfterClean); //通过Dao层(EasyOcrDao)获取验证码。注意必须在打开登录页面后使用
 		    
-		    LoginPage.getVerifyCodeElement(driver).clear();
-		    LoginPage.getVerifyCodeElement(driver).sendKeys(verifyCode);
-		    if(LoginPage.getErrorHintElement(driver).getText().equals(Config.errorHintStr)) {
+		    loginPage.getVerifyCodeElement(driver).clear();
+		    loginPage.getVerifyCodeElement(driver).sendKeys(verifyCode);
+		    if(loginPage.getErrorHintElement(driver).getText().equals(Config.errorHintStr)) {
 		    	flag = true;
 		    	element.click();
 		    	System.out.println("获取到错误的验证码，刷新验证码并重新获取中...");
@@ -250,7 +251,7 @@ public class EasyOcrDao {
 		    	flag = false;
 		    	System.out.println("已获取到正确的验证码： " + verifyCode);
 		    }
-	    }
+	    }*/
 	    
 	    return verifyCode;
 	}

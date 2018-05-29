@@ -1,11 +1,14 @@
 package com.youe.cd.test.pageobject.login;
 
+import com.youe.cd.test.util.Locator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginPage {
-	private static WebElement element = null;
+import java.io.IOException;
+
+public class LoginPage extends BasePage {
+	//private WebElement element = null;
 	
 /*	public static WebElement getUserNameElement(WebDriver driver) {
 		element = driver.findElement(By.id("TANGRAM__PSP_10__userName"));
@@ -67,7 +70,7 @@ public class LoginPage {
 
 //***********************************************
 
-	public static WebElement getUserNameElement(WebDriver driver) {
+	/*public static WebElement getUserNameElement(WebDriver driver) {
 		element = driver.findElement(By.xpath("/html/body/section/section/div/form/div[1]/div/div[1]/input"));
 		return element;
 	}
@@ -96,6 +99,36 @@ public class LoginPage {
 	public static WebElement getSubmitElement(WebDriver driver) {
 		element = driver.findElement(By.xpath("/html/body/section/section/div/form/div[3]/div/button"));
 		return element;
+	}*/
+
+	private String xmlPath = "src/test/java/com/youe/cd/test/pageobjectconfig/login/LoginPage.xml";
+
+	public LoginPage() {
+		//工程内读取对象库文件
+		setXmlPath(xmlPath);
+		getLocatorMap();
 	}
+
+	public WebElement getUserNameElement(WebDriver driver) throws IOException {
+		WebElement element = getElement(driver, "userName");
+		return element;
+	}
+
+	public WebElement getPasswordElement(WebDriver driver) throws IOException {
+		WebElement element = getElement(driver, "password");
+		return element;
+	}
+
+	public WebElement getVerifyCodeImgElement(WebDriver driver) throws IOException {
+		WebElement element = getElement(driver, "verifyCodeImg");
+		return element;
+	}
+
+	public WebElement getSubmitElement(WebDriver driver) throws IOException {
+		WebElement element = getElement(driver, "submit");
+		return element;
+	}
+
+
 	
 }

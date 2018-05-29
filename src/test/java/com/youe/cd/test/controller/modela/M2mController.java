@@ -8,6 +8,7 @@ import com.youe.cd.test.service.modela.SearchWebService;
 import com.youe.cd.test.util.Config;
 import com.youe.cd.test.util.DateUtil;
 import com.youe.cd.test.util.action.ElementAction;
+import com.youe.cd.test.util.action.WebTest;
 import com.youe.cd.test.util.testbase.TestBase;
 import com.youe.cd.test.util.verify.Verify;
 import org.openqa.selenium.By;
@@ -17,8 +18,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class M2mController extends TestBase {
-    String nowTimeStr = DateUtil.getDateLite();
-    String dataSourceName = "uitest源forMysql_" + nowTimeStr;
+    String nowTimeStr = DateUtil.getDateLiteEssential();
+    String dataSourceName = "ut源Mysql_" + nowTimeStr;
+
+    DataSourceService dataSourceService = new DataSourceService();
+    AccessService accessService = new AccessService();
 
     @Test(priority = 1, enabled = true, description = "创建表数据源")
     public void runTestCreateDataSource() {
@@ -28,9 +32,10 @@ public class M2mController extends TestBase {
             Thread.sleep(3000);
 
             driver.findElement(By.linkText("数据接入")).click();
-            driver.findElement(By.linkText("接入管理")).click();
+            //driver.findElement(By.linkText("接入管理")).click();
+            driver.findElement(By.xpath("//*[contains(text(),'数据源管理')]")).click();
 
-            DataSourceService.createDataSource(driver, "TABLE", "MYSQL", dataSourceName);
+            dataSourceService.createDataSource(driver, "关系型数据库", "MYSQL", dataSourceName);
 
             boolean actualElement= ElementAction.isElementPresent(driver,By.xpath("//div[text()='" + dataSourceName + "']"));
 
@@ -38,7 +43,8 @@ public class M2mController extends TestBase {
 
         } catch (Exception e) {
             //e.printStackTrace();
-            logger.error("[logger] 异常信息为：", e);
+            //logger.error("[logger] 异常信息为：", e);
+            WebTest.handleException(e);
         }
 
     }
@@ -54,16 +60,18 @@ public class M2mController extends TestBase {
             driver.findElement(By.xpath("//*[@id='115']")).click();
             Thread.sleep(3000);
             driver.findElement(By.linkText("数据接入")).click();
-            driver.findElement(By.linkText("接入管理")).click();
+            //driver.findElement(By.linkText("接入管理")).click();
+            driver.findElement(By.xpath("//*[contains(text(),'数据源管理')]")).click();
 
-            AccessService.createTaskFlow(driver, dataSourceName, dataSetName, taskName, nowTimeEssential);
+            accessService.createTaskFlow(driver, dataSourceName, dataSetName, taskName, nowTimeEssential);
 
             String actualNum = driver.findElement(By.xpath("//header[contains(text(),'行数：')]/span")).getText();
             Assert.assertEquals(actualNum, "3");
 
         } catch (Exception e) {
             //e.printStackTrace();
-            logger.error("[logger] 异常信息为：", e);
+            //logger.error("[logger] 异常信息为：", e);
+            WebTest.handleException(e);
         }
 
     }
