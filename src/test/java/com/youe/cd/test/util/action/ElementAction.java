@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class ElementAction extends BaseAction {
     private static boolean acceptNextAlert = true;
 
-    private static Logger logger = LoggerFactory.getLogger(ElementAction.class);
+    //private static Logger logger = LoggerFactory.getLogger(ElementAction.class);
 
     /**
      * 隐式等待, 默认30秒
@@ -88,10 +88,10 @@ public class ElementAction extends BaseAction {
     public static boolean isElementPresent(WebDriver driver, By by) {
         try {
             driver.findElement(by);
-            logger.info("元素存在");
+            logger.info("元素存在" + by.toString());
             return true;
         } catch (NoSuchElementException e) {
-            logger.error("没有这个元素");
+            logger.info("没有这个元素(不存在): " + by.toString());
             return false;
         }
     }
@@ -171,27 +171,7 @@ public class ElementAction extends BaseAction {
         }
     }
 
-    public static void clickBySpanText(WebDriver driver, String text) {
-        try {
-            String xpathStr = "//span[text()='" + text + "']";
-            //String xpathStr = "//span[contains(text(),'" + text + "')]";
-            WebElement webElement = driver.findElement(By.xpath(xpathStr));
 
-            //Select select = new Select(webElement);
-
-            try {
-                //select.selectByVisibleText(text);
-                webElement.click();
-                logger.info("成功选择(click)下拉列表中的：" + text);
-            } catch (NoSuchElementException e) {
-                logger.info("找不到下拉值，选择下拉列表失败，Text为：" + text);
-                throw e;
-            }
-        } catch (NoSuchElementException e) {
-            logger.error("找不到(下拉列表)元素，选择下拉列表失败，Text为：" + text);
-        }
-
-    }
 
     public static void selectByText(WebDriver driver, By by, String text) {
         try {
@@ -207,6 +187,7 @@ public class ElementAction extends BaseAction {
             }
         } catch (NoSuchElementException e) {
             logger.error("找不到(下拉列表)元素，选择下拉列表失败，Text为：" + text);
+            throw e;
         }
 
     }
@@ -306,7 +287,7 @@ public class ElementAction extends BaseAction {
      * @param driver
      * @param by
      */
-    public static void checkBoxCheckAll(WebDriver driver, By by) {
+    public static void checkBoxCheckAll(WebDriver driver, By by) throws Exception {
         List<WebElement> checkBoxs = driver.findElements(by);  //通过by定位一组元素
         for(WebElement checkBox:checkBoxs) {  //使用循环全选
             checkBox.click();
@@ -317,6 +298,7 @@ public class ElementAction extends BaseAction {
         } catch (InterruptedException e) {
             //e.printStackTrace();
             logger.error("[logger] 异常信息为: ", e);
+            throw e;
         }
     }
 

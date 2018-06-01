@@ -4,16 +4,13 @@ import com.youe.cd.test.dao.TxtDao;
 import com.youe.cd.test.service.access.AccessService;
 import com.youe.cd.test.service.datasource.DataSourceService;
 import com.youe.cd.test.service.modela.ParamSearchWebService;
-import com.youe.cd.test.service.modela.SearchWebService;
 import com.youe.cd.test.util.Config;
 import com.youe.cd.test.util.DateUtil;
 import com.youe.cd.test.util.action.ElementAction;
 import com.youe.cd.test.util.action.WebTest;
-import com.youe.cd.test.util.testbase.TestBase;
-import com.youe.cd.test.util.verify.Verify;
+import com.youe.cd.test.util.action.WebTestDaaS;
+import com.youe.cd.test.controller.TestBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -27,13 +24,7 @@ public class M2mController extends TestBase {
     @Test(priority = 1, enabled = true, description = "创建表数据源")
     public void runTestCreateDataSource() {
         try {
-            Thread.sleep(2000);
-            driver.findElement(By.xpath("//*[@id='115']")).click();
-            Thread.sleep(3000);
-
-            driver.findElement(By.linkText("数据接入")).click();
-            //driver.findElement(By.linkText("接入管理")).click();
-            driver.findElement(By.xpath("//*[contains(text(),'数据源管理')]")).click();
+            WebTestDaaS.goToDataSourceManagementPage(driver);
 
             dataSourceService.createDataSource(driver, "关系型数据库", "MYSQL", dataSourceName);
 
@@ -56,12 +47,7 @@ public class M2mController extends TestBase {
         String taskName = "uitaskm2m_" + nowTimeEssential;
 
         try {
-            Thread.sleep(2000);
-            driver.findElement(By.xpath("//*[@id='115']")).click();
-            Thread.sleep(3000);
-            driver.findElement(By.linkText("数据接入")).click();
-            //driver.findElement(By.linkText("接入管理")).click();
-            driver.findElement(By.xpath("//*[contains(text(),'数据源管理')]")).click();
+            WebTestDaaS.goToDataSourceManagementPage(driver);
 
             accessService.createTaskFlow(driver, dataSourceName, dataSetName, taskName, nowTimeEssential);
 

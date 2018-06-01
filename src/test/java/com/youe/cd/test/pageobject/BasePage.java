@@ -1,4 +1,4 @@
-package com.youe.cd.test.pageobject.login;
+package com.youe.cd.test.pageobject;
 
 import com.youe.cd.test.util.Locator;
 import com.youe.cd.test.util.Locator.ByType;
@@ -116,6 +116,15 @@ public class BasePage {
 
 		return by;
 	}
+
+	/*public By getBy(String locatorName) {
+		By by = null;
+
+		by = getByByLocatorName(locatorName);
+		//element = driver.findElement(by);
+
+		return by;
+	}*/
 
 	public WebElement getElement(WebDriver driver, String locatorName) {
 		WebElement element = null;

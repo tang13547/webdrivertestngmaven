@@ -1,7 +1,6 @@
 package com.youe.cd.test.pageobject.login;
 
-import com.youe.cd.test.util.Locator;
-import org.openqa.selenium.By;
+import com.youe.cd.test.pageobject.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -109,7 +108,7 @@ public class LoginPage extends BasePage {
 		getLocatorMap();
 	}
 
-	public WebElement getUserNameElement(WebDriver driver) throws IOException {
+	/*3public WebElement getUserNameElement(WebDriver driver) throws IOException {
 		WebElement element = getElement(driver, "userName");
 		return element;
 	}
@@ -127,7 +126,7 @@ public class LoginPage extends BasePage {
 	public WebElement getSubmitElement(WebDriver driver) throws IOException {
 		WebElement element = getElement(driver, "submit");
 		return element;
-	}
+	}*/
 
 
 	

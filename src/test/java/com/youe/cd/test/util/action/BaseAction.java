@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BaseAction {
-    public static Logger logger = LoggerFactory.getLogger(BaseAction.class);
+public class BaseAction extends ActionAdaptor {
+    //public static Logger logger = LoggerFactory.getLogger(BaseAction.class);
 
     public static void back(WebDriver driver) {
         driver.navigate().back();

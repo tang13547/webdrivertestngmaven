@@ -68,6 +68,96 @@ public class Verify {
         }
     }*/
 
+    public static void verifyTrue(boolean condition) {
+        try {
+            errorBuffer.delete(0, errorBuffer.length());  //先请空buffer
+            //Assert.assertEquals(actual, expected);
+            Assert.assertTrue(condition);
+            //return true;
+        } catch (AssertionError e) {
+            //增加verify失败时的自动截图
+            driver = ScreenShotOnFailureListener.driver;
+            className = ScreenShotOnFailureListener.className;
+            methodName = ScreenShotOnFailureListener.methodName;
+            ScreenShotUtil.takeScreenShot(driver, className, methodName+ "_" + "Verify", Config.screenShotPath);
+
+            errorBuffer.append(e.getMessage() + "\n");
+            flag = false;
+            //return false;
+        }
+
+        /*if(errorBuffer.length() > 0) {
+            throw new AssertionError(errorBuffer.toString());
+        }*/
+    }
+
+    public static void verifyTrue(boolean condition, String message) {
+        try {
+            errorBuffer.delete(0, errorBuffer.length());  ////先请空buffer
+            Assert.assertEquals(condition, message);
+            //return true;
+        } catch (AssertionError e) {
+            //增加verify失败时的自动截图
+            driver = ScreenShotOnFailureListener.driver;
+            className = ScreenShotOnFailureListener.className;
+            methodName = ScreenShotOnFailureListener.methodName;
+            ScreenShotUtil.takeScreenShot(driver, className, methodName+ "_" + "Verify", Config.screenShotPath);
+
+            errorBuffer.append(e.getMessage() + "\n");
+            flag = false;
+            //return false;
+        }
+
+        /*if(errorBuffer.length() > 0) {
+            throw new AssertionError(errorBuffer.toString());
+        }*/
+    }
+
+    public static void verifyFalse(boolean condition) {
+        try {
+            errorBuffer.delete(0, errorBuffer.length());  //先请空buffer
+            //Assert.assertEquals(actual, expected);
+            Assert.assertFalse(condition);
+            //return true;
+        } catch (AssertionError e) {
+            //增加verify失败时的自动截图
+            driver = ScreenShotOnFailureListener.driver;
+            className = ScreenShotOnFailureListener.className;
+            methodName = ScreenShotOnFailureListener.methodName;
+            ScreenShotUtil.takeScreenShot(driver, className, methodName+ "_" + "Verify", Config.screenShotPath);
+
+            errorBuffer.append(e.getMessage() + "\n");
+            flag = false;
+            //return false;
+        }
+
+        /*if(errorBuffer.length() > 0) {
+            throw new AssertionError(errorBuffer.toString());
+        }*/
+    }
+
+    public static void verifyFalse(boolean condition, String message) {
+        try {
+            errorBuffer.delete(0, errorBuffer.length());  ////先请空buffer
+            Assert.assertFalse(condition, message);
+            //return true;
+        } catch (AssertionError e) {
+            //增加verify失败时的自动截图
+            driver = ScreenShotOnFailureListener.driver;
+            className = ScreenShotOnFailureListener.className;
+            methodName = ScreenShotOnFailureListener.methodName;
+            ScreenShotUtil.takeScreenShot(driver, className, methodName+ "_" + "Verify", Config.screenShotPath);
+
+            errorBuffer.append(e.getMessage() + "\n");
+            flag = false;
+            //return false;
+        }
+
+        /*if(errorBuffer.length() > 0) {
+            throw new AssertionError(errorBuffer.toString());
+        }*/
+    }
+
     /**
      * 第二步：在代码最后，通过errorBuffer抛出断言失败AssertionError异常(错误)
      */

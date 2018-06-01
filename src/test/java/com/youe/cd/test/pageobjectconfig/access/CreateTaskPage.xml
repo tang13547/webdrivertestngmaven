@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--整个对象库文件的根目录，管理整个项目的对象-->
+<map>
+    <!--管理一个页面的元素（webelement：input,select,textare,a,li等标签），一个page包含多个locator对象
+    Pagename:page对象名字，格式：net.hk515.PageObject.xxxPage;最后面那位才是真正的页面名字，前面的是java对象库路径；
+    另外注意，页面名字是头个单词大写；例如主页：名字定义为 net.hk515.PageObject.HomePage
+    Value：页面对象的URL，可不填。
+    Desc:页面对象中文描述-->
+    <page pagename="com.youe.cd.test.pageobject.access.CreateTaskPage" value="" desc="DaaS 新建任务页面">
+        <!--管理一个页面的元素（webelement：input,select,textare,a,li等标签），一个page包含多个locator对象
+        Type：定位方式，包含id,name,class,linktext,xpath,css等，定位元素的时候灵活使用，一般可以统一用xpath
+        代替id,name,class，linktext的定位方式。
+        Timeout：元素加载时间，有些页面元素，可能要等待一段时间才能加载过来，为了查找元素的稳定性，需加等待时间。
+        Value:元素定位信息，如果是id,name,class，linktext直接把网页元素对应的这些属性值写上即可，如果是xpath定位方式，
+        需要填写正确的xpath语法格式。
+        Desc:元素的描述，元素的中文描述信息-->
+        <!--<locator type="xpath" timeout="3" value="/html/body/section/section/div/form/div[1]/div/div[1]/input"  desc="账户名">userLogin</locator>-->
+        <locator type="xpath" timeout="3" value="//span[contains(text(),'新建任务')]"  desc="新建任务图标">addTaskButton</locator>
+
+        <locator type="xpath" timeout="3" value="//input[@placeholder='请选择数据源类型']"  desc="">DSTypeSelect</locator>
+        <!--<locator type="xpath" timeout="3" value="//div[not(contains(@style,'display: none'))]/div/div/ul/li/span[text()='MYSQL']"  desc="">DSTypeSelectMYSQL</locator>
+        <locator type="xpath" timeout="3" value="//div[not(contains(@style,'display: none'))]/div/div/ul/li/span[text()='ORACLE']"  desc="">DSTypeSelectORACLE</locator>-->
+
+        <locator type="xpath" timeout="3" value="//label[text()='数据源名称']/../div/div/div/span/span"  desc="">DSName</locator>
+        <!--选择数据源因为是下拉动态的，故使用其它方法，特殊处理，此处不添加-->
+        <locator type="xpath" timeout="3" value="//a[@class='confirm']"  desc="">confirmDS</locator>
+
+        <!--<locator type="xpath" timeout="3" value="//div[text()='testtable']/../../td[1]"  desc="">chooseTable</locator>-->
+
+        <locator type="xpath" timeout="3" value="//input[@placeholder='请选择业务组']"  desc="">BusinessGroupSelect</locator>
+        <!--<locator type="xpath" timeout="3" value="//span[text()='成都优易']"  desc="">BusinessGroupSelectCDYoue</locator>-->
+
+        <locator type="xpath" timeout="3" value="//input[@placeholder='请输入内容']"  desc="">dataSetNameInput</locator>
+        <locator type="xpath" timeout="3" value="//div[contains(text(),'下一步')]"  desc="">nextStep</locator>
+        <locator type="xpath" timeout="3" value="//form/div/div/div[2]/input"  desc="">tabRulePrefix</locator>
+        <locator type="xpath" timeout="3" value="//a[@class='confirm']"  desc="">confirmRule</locator>
+
+        <locator type="xpath" timeout="3" value="//div[@class='submit' and text()='保存']"  desc="">saveButton</locator>
+        <locator type="xpath" timeout="3" value="//div[@class='submit' and contains(text(),'提交')]"  desc="">submitButton</locator>
+
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'任务名称')]/../div/div/input"  desc="">taskNameInput</locator>
+
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'生效日期')]/../div/div/input"  desc="">effectiveDateInput</locator>
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'生效日期')]"  desc="">effectiveDateTitle</locator>
+
+        <locator type="xpath" timeout="3" value="//label[text()='任务周期']/../div/div/div/input"  desc="">taskCycleSelect</locator>
+        <!--<locator type="xpath" timeout="3" value="//span[text()='小时']"  desc="">taskCycleSelectHour</locator>
+        <locator type="xpath" timeout="3" value="//span[text()='天']"  desc="">taskCycleSelectHour</locator>-->
+
+        <locator type="xpath" timeout="3" value="//label[text()='起始时间']/../div/div/div/input"  desc="">startTimeInput</locator>
+
+        <locator type="xpath" timeout="3" value="//label[text()='执行时间']/../div/div/input"  desc="">executeTimeInput</locator>
+        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div/div[1]/input"  desc="">amountConfigInput</locator>
+        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div/div[2]/input"  desc="">amountConfigInput2</locator>
+
+        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div/div[3]/div/span/span/i"  desc="">amountUnitSelect</locator>
+        <!--<locator type="xpath" timeout="3" value="//span[text()='条']"  desc="">amountUnitSelectTiao</locator>
+        <locator type="xpath" timeout="3" value="//span[text()='个']"  desc="">amountUnitSelectGe</locator>-->
+
+        <locator type="xpath" timeout="3" value="//label[text()='报错']/../div/div/div/div/span/span"  desc="">errorSelect</locator>
+        <!--<locator type="xpath" timeout="3" value="//span[text()='5']"  desc="">errorSelect5</locator>
+        <locator type="xpath" timeout="3" value="//span[text()='4']"  desc="">errorSelect4</locator>
+        <locator type="xpath" timeout="3" value="//span[text()='3']"  desc="">errorSelect3</locator>
+        <locator type="xpath" timeout="3" value="//span[text()='2']"  desc="">errorSelect2</locator>
+        <locator type="xpath" timeout="3" value="//span[text()='0']"  desc="">errorSelect1</locator>
+        <locator type="xpath" timeout="3" value="//span[text()='0']"  desc="">errorSelect0</locator>-->
+
+        <locator type="xpath" timeout="3" value="//span[text()='运行']"  desc="">run</locator>
+        <!--<locator type="xpath" timeout="3" value="//label[text()='执行时间']/../div/div/input"  desc="">executeTimeInput</locator>-->
+    </page>
+</map>

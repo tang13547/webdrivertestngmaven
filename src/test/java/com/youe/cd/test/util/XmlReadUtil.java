@@ -52,27 +52,27 @@ public class XmlReadUtil {
 						Element locator = (Element) l.next();
 						//获取元素名
 						locatorName = locator.getText();
-						logger.info("开始读取"+locatorName+"定位信息");
+						//logger.info("开始读取"+locatorName+"定位信息");
 						for (Iterator<?> j = locator.attributeIterator(); j.hasNext();)
 						{
 							Attribute attribute = (Attribute) j.next();
 							if (attribute.getName().equals("type"))
 							{
 								type = attribute.getValue();
-								logger.info("读取定位方式： " + type);
+								//logger.info("读取定位方式： " + type);
 							} else if (attribute.getName().equals("timeout"))
 							{
 								timeOut = attribute.getValue();
-								logger.info("读取元素等待时间 ：" + timeOut);
+								//logger.info("读取元素等待时间 ：" + timeOut);
 							} else if (attribute.getName().equals("value"))
 							{
 								value = attribute.getValue();
-								logger.info("读取定位内容：" + value);
+								//logger.info("读取定位内容：" + value);
 							}
 						}
 						//trim()去除字符串前后空格
 						Locator tempLocator = new Locator(value.trim(),Integer.parseInt(timeOut), getByType(type),locatorName.trim());
-						logger.info("成功读取 " + locatorName+"元素信息！");
+						//logger.info("成功读取 " + locatorName+"元素信息！");
 						locatorMap.put(locatorName.trim(), tempLocator);
 					}
 					continue;
@@ -80,7 +80,8 @@ public class XmlReadUtil {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			//e.printStackTrace();
+			logger.error("解析xml文件时的异常信息为：", e);
 		}
 
 		logger.info("----------解析UILibrary.xml对象库完毕-----------\n");
@@ -116,27 +117,27 @@ public class XmlReadUtil {
 						Element locator = (Element) l.next();
 						//获取元素名
 						locatorName = locator.getText();
-						logger.info("开始读取"+locatorName+"定位信息");
+						//logger.info("开始读取"+locatorName+"定位信息");
 						for (Iterator<?> j = locator.attributeIterator(); j.hasNext();)
 						{
 							Attribute attribute = (Attribute) j.next();
 							if (attribute.getName().equals("type"))
 							{
 								type = attribute.getValue();
-								logger.info("读取定位方式： " + type);
+								//logger.info("读取定位方式： " + type);
 							} else if (attribute.getName().equals("timeout"))
 							{
 								timeOut = attribute.getValue();
-								logger.info("读取元素等待时间 ：" + timeOut);
+								//logger.info("读取元素等待时间 ：" + timeOut);
 							} else if (attribute.getName().equals("value"))
 							{
 								value = attribute.getValue();
-								logger.info("读取定位内容：" + value);
+								//logger.info("读取定位内容：" + value);
 							}
 						}
 						//trim()去除字符串前后空格
 						Locator tempLocator = new Locator(value.trim(),Integer.parseInt(timeOut), getByType(type),locatorName.trim());
-						logger.info("成功读取 " + locatorName+"元素信息！");
+						//logger.info("成功读取 " + locatorName+"元素信息！");
 						locatorMap.put(locatorName.trim(), tempLocator);
 					}
 					continue;

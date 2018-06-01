@@ -1,78 +1,95 @@
 package com.youe.cd.test.service.access;
 
+import com.youe.cd.test.pageobject.access.CreateTaskPage;
 import com.youe.cd.test.util.DateUtil;
 import com.youe.cd.test.util.action.ElementAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class AccessService {
     public void createTaskFlow(WebDriver driver, String dataSourceName, String dataSetName, String taskName, String nowTimeEssential) throws Exception {
-        driver.findElement(By.xpath("//span[contains(text(),'新建任务')]")).click();
-        //driver.findElement(By.xpath("/html/body/section/section/section/main/div[2]/div/div[2]/form/div[1]/div/div/div[1]/input")).click();
-        //driver.findElement(By.xpath("//label[text()='数据源类型']/../div/div/div/span/span/i")).click();
-        driver.findElement(By.xpath("//input[@placeholder='请选择数据源类型']")).click();
+        CreateTaskPage createTaskPage = new CreateTaskPage();
+
+        createTaskPage.getElement(driver, "addTaskButton").click();
+
+        createTaskPage.getElement(driver, "DSTypeSelect").click();
         Thread.sleep(2000);
-        //driver.findElement(By.xpath("//span[text()='MYSQL']")).click();
-        //ElementAction.clickBySpanText(driver, "MYSQL");
-        driver.findElement(By.xpath("//div[not(contains(@style,'display: none'))]/div/div/ul/li/span[text()='MYSQL']")).click();
+        ElementAction.clickBySpanTextForDS(driver, "MYSQL");
         Thread.sleep(2000);
-        //driver.findElement(By.xpath("/html/body/section/section/section/main/div[2]/div/div[2]/form/div[2]/div/div/div[1]/input")).click();
-        driver.findElement(By.xpath("//label[text()='数据源名称']/../div/div/div/span/span")).click();
+
+        createTaskPage.getElement(driver, "DSName").click();
         Thread.sleep(2000);
-        //driver.findElement(By.xpath("//span[text()='test源forMysql-joe']")).click();
-        ElementAction.clickBySpanText(driver, dataSourceName);
+
+        ElementAction.clickBySpanText(driver, dataSourceName);  //不从xml文件中读取, 特殊处理
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//a[@class='confirm']")).click();
+
+        createTaskPage.getElement(driver, "confirmDS").click();
         Thread.sleep(5000);
 
-        driver.findElement(By.xpath("//div[text()='testtable']/../../td[1]")).click();
+        ElementAction.clickByDivTextForChooseTable(driver, "testtable");
         //driver.findElement(By.xpath("//div[contains(text(),'baidu_tieba_20000item')]")).findElement(By.xpath("./../../td[1]/div/label/span")).click();
         Thread.sleep(5000);
 
-        driver.findElement(By.xpath("//input[@placeholder='请选择业务组']")).click();
+        createTaskPage.getElement(driver, "BusinessGroupSelect").click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//span[text()='成都优易']")).click();
+        ElementAction.clickBySpanText(driver, "成都优易");
         Thread.sleep(1000);
 
-        driver.findElement(By.xpath("//input[@placeholder='请输入内容']")).sendKeys(dataSetName);
+        createTaskPage.getElement(driver, "dataSetNameInput").sendKeys(dataSetName);
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("//div[contains(text(),'下一步')]")).click();
+        createTaskPage.getElement(driver, "nextStep").click();
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("//form/div/div/div[2]/input")).sendKeys("tab_" + nowTimeEssential);
-        driver.findElement(By.xpath("//a[@class='confirm']")).click();
+
+        createTaskPage.getElement(driver, "tabRulePrefix").sendKeys("tab_" + nowTimeEssential);
+
+        createTaskPage.getElement(driver, "confirmRule").click();
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("//div[@class='submit' and text()='保存']")).click();
+        createTaskPage.getElement(driver, "saveButton").click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//div[@class='submit' and contains(text(),'提交')]")).click();
+
+        createTaskPage.getElement(driver, "submitButton").click();
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("//label[contains(text(),'任务名称')]/../div/div/input")).sendKeys(taskName);
+        createTaskPage.getElement(driver, "taskNameInput").sendKeys(taskName);
 
-        driver.findElement(By.xpath("//label[text()='任务周期']/../div/div/div/input")).click();
+        WebElement webElement = createTaskPage.getElement(driver, "effectiveDateInput");
+        webElement.clear();
+        webElement.sendKeys(DateUtil.getDateLiteOnlyDay());
+        Thread.sleep(3000);
+        createTaskPage.getElement(driver, "effectiveDateTitle").click();
+        Thread.sleep(3000);
+
+        createTaskPage.getElement(driver, "taskCycleSelect").click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//span[text()='小时']")).click();
+        ElementAction.clickBySpanText(driver, "天");
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//label[text()='执行时间']/../div/div/input")).sendKeys(DateUtil.getAfterDate(60000));
-        driver.findElement(By.xpath("//label[text()='写入量配置']/../div/div/div[1]/input")).sendKeys("1");
-        driver.findElement(By.xpath("//label[text()='写入量配置']/../div/div/div[2]/input")).sendKeys("10000000");
-        driver.findElement(By.xpath("//label[text()='写入量配置']/../div/div/div[3]/div/span/span/i")).click();
+
+        //createTaskPage.getElement(driver, "executeTimeInput").sendKeys(DateUtil.getAfterDate(60000));
+        createTaskPage.getElement(driver, "startTimeInput").sendKeys(DateUtil.getAfterDateOnlySecondHalf(60000));
+
+        createTaskPage.getElement(driver, "amountConfigInput").sendKeys("1");
+        createTaskPage.getElement(driver, "amountConfigInput2").sendKeys("10000000");
+        createTaskPage.getElement(driver, "amountUnitSelect").click();
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//span[text()='条']")).click();
+        ElementAction.clickBySpanText(driver, "条");
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//label[text()='报错']/../div/div/div/div/span/span")).click();
+
+        createTaskPage.getElement(driver, "errorSelect").click();
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//span[text()='5']")).click();
+        ElementAction.clickBySpanText(driver, "5");
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//span[text()='运行']")).click();
+
+        createTaskPage.getElement(driver, "run").click();
         Thread.sleep(3000);
 
         Thread.sleep(90000);
         driver.findElement(By.xpath("//a[contains(text(),'元数据管理')]")).click();
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//a[text()='数据集列表']")).click();
+        driver.findElement(By.xpath("//li[contains(text(),'数据集管理')]")).click();
         Thread.sleep(2000);
         //Actions a = new Actions(driver);
         //a.moveToElement(driver.findElement(By.xpath("//span[text()='" + dataSetName + "']/../../../../td[9]/div/div/span"))).perform();

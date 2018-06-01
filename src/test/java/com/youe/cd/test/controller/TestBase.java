@@ -1,7 +1,8 @@
-package com.youe.cd.test.util.testbase;
+package com.youe.cd.test.controller;
 
 import com.youe.cd.test.util.Config;
 import com.youe.cd.test.util.action.WebTest;
+import com.youe.cd.test.util.action.WebTestDaaS;
 import com.youe.cd.test.util.listener.ScreenShotOnFailureListener;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -42,7 +43,7 @@ public class TestBase {
 
     @AfterMethod
     public void testAfterMethod() {
-        WebTest.switchToHomePage(driver);
+        WebTestDaaS.goToHomePage(driver);
     }
 
     @AfterClass

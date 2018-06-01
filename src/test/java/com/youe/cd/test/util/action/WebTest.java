@@ -162,30 +162,22 @@ public class WebTest {
 
 	    LoginPage loginPage = new LoginPage();
 
-	    loginPage.getUserNameElement(driver).clear();
-	    loginPage.getUserNameElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
+	    //loginPage.getUserNameElement(driver).clear();
+	    loginPage.getElement(driver, "userName").clear();
+	    //loginPage.getUserNameElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
+	    loginPage.getElement(driver, "userName").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
 	    
-	    loginPage.getPasswordElement(driver).clear();
-	    loginPage.getPasswordElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
+	    //loginPage.getPasswordElement(driver).clear();
+	    loginPage.getElement(driver, "password").clear();
+	    //loginPage.getPasswordElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
+	    loginPage.getElement(driver, "password").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
 	    
-	    loginPage.getSubmitElement(driver).click();
+	    //loginPage.getSubmitElement(driver).click();
+	    loginPage.getElement(driver, "submit").click();
 	    Thread.sleep(5000);
 	    
 }
 
-	/**
-	 * 打开HomePage
-	 * @param
-	 */
-	public static void switchToHomePage(WebDriver driver) {
-		driver.get(Config.baseUrl2);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-	}
   
   /*5public static void loginWithVerifyCodeByExcel(WebDriver driver,String baseUrl,String excelFilePath) throws Exception {
 	  	//Sheet excelSheet = null;
