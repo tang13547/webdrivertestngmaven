@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 //7 import org.junit.*;
 //7 import static org.junit.Assert.*;
+import com.youe.cd.test.controller.TestBase;
 import com.youe.cd.test.dao.PoiExcelDao;
 import com.youe.cd.test.util.Config;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -32,15 +33,14 @@ import java.util.ArrayList;
 import org.openqa.selenium.interactions.Actions; //使用Actions类处理moveToElement()
 import org.testng.Assert;
 
-
-public class WebTest {
+public class WebTest extends TestBase {
   //private boolean acceptNextAlert = true;
   private static StringBuffer verificationErrors = new StringBuffer();
   static Logger logger = LoggerFactory.getLogger(WebTest.class);
 
   //@BeforeTest
   //@Parameters({"testEnv","testBrowser"}) //只需在最上层加入，此处不要
-  public static WebDriver setUp(WebDriver driver, String testEnv, String testBrowser) throws Exception {  //必须返回 Webdriver,否则无法传递给主类中的属性
+  public static WebDriver setUp(String testEnv, String testBrowser) {  //必须返回 Webdriver,否则无法传递给主类中的属性
 	if(testBrowser.equals("firefox")) {
 		//ProfilesIni allProfiles =new ProfilesIni();
 		//FirefoxProfile profile = allProfiles.getProfile("SeleniumProfile"); //修改值为: SeleniumProfile
@@ -153,7 +153,7 @@ public class WebTest {
 	    
   }*/
   
-  public static void loginByExcel(WebDriver driver, String baseUrl, String excelFilePath) throws Exception {
+  public static void loginByExcel(String baseUrl, String excelFilePath) throws Exception {
 	  	//Sheet excelSheet = null;
 	  	//excelSheet = PoiExcelDao.getExcelSheet(excelFilePath);  //通过Dao层读取excel文件
 	 	    
@@ -163,17 +163,17 @@ public class WebTest {
 	    LoginPage loginPage = new LoginPage();
 
 	    //loginPage.getUserNameElement(driver).clear();
-	    loginPage.getElement(driver, "userName").clear();
+	    loginPage.getElement("userName").clear();
 	    //loginPage.getUserNameElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
-	    loginPage.getElement(driver, "userName").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
+	    loginPage.getElement("userName").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
 	    
 	    //loginPage.getPasswordElement(driver).clear();
-	    loginPage.getElement(driver, "password").clear();
+	    loginPage.getElement("password").clear();
 	    //loginPage.getPasswordElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
-	    loginPage.getElement(driver, "password").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
+	    loginPage.getElement("password").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
 	    
 	    //loginPage.getSubmitElement(driver).click();
-	    loginPage.getElement(driver, "submit").click();
+	    loginPage.getElement("submit").click();
 	    Thread.sleep(5000);
 	    
 }
@@ -201,18 +201,8 @@ public class WebTest {
 	    Thread.sleep(5000);
 	    
   }*/
-  
-  /**
-   * 通过Cookie登陆
-   * @param driver
-   * @param baseUrl
-   * @param cookieName
-   * @param cookieValue
-   * @param cookieName2
-   * @param cookieValue2
-   * @throws Exception
-   */
-  public static void loginByCookie(WebDriver driver,String baseUrl,String cookieName,String cookieValue, String cookieName2, String cookieValue2) throws Exception {
+
+  /*public static void loginByCookie(WebDriver driver,String baseUrl,String cookieName,String cookieValue, String cookieName2, String cookieValue2) throws Exception {
 	    driver.get(baseUrl);  //打开网页首页
 
 	    driver.manage().deleteAllCookies();
@@ -225,9 +215,9 @@ public class WebTest {
 	    Thread.sleep(5000);
 	    //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	    
 	    //return driver;
-  }
+  }*/
 
-	public static void logout(WebDriver driver) throws Exception {
+	public static void logout() throws Exception {
 		Actions a = new Actions(driver);
 		a.moveToElement(driver.findElement(By.xpath("/html/body/section/main/header/header/div[1]/div[2]/div/p/i"))).perform();//要用a.必须放在一个类的方法中。
 		driver.findElement(By.className("Dropdown")).findElement(By.id("userOut")).click();
@@ -262,7 +252,7 @@ public class WebTest {
   }*/
   
   //@AfterTest
-  public static void tearDown(WebDriver driver) throws Exception {
+  public static void tearDown() throws Exception {
     driver.quit();
     //静态方法中，默认verificationErrorString为static,所以必须将verificationErrors定义为类中全局staic类型
     String verificationErrorString = verificationErrors.toString();

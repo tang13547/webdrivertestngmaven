@@ -15,15 +15,4 @@ public class HomePage extends BasePage {
         getLocatorMap();
     }
 
-    /*3public WebElement getDataAccessIconElement(WebDriver driver) throws IOException {
-        WebElement element = getElement(driver, "dataAccessIcon");
-        return element;
-    }
-
-    public WebElement getPassworrdch(WebDriver driver) throws IOException {
-        WebElement element = getElement(driver, "passwordch");
-        return element;
-    }*/
-
-
 }

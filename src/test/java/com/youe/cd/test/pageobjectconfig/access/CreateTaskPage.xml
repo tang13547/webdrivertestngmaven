@@ -27,16 +27,43 @@
 
         <!--<locator type="xpath" timeout="3" value="//div[text()='testtable']/../../td[1]"  desc="">chooseTable</locator>-->
 
+        <!--数据源类型选择ftp时才使用，mysql时不使用-->
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'文件路径')]/../div/div/input"  desc="">filePath</locator>
+        <locator type="xpath" timeout="3" value="//input[@placeholder='请选择文件类型']"  desc="">fileTypeSelect</locator>
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'列分隔符')]/../div/div/input"  desc="">colSeparator</locator>
+
+        <!--非mysql时使用-->
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'介质类型')]/../div/div/div/input"  desc="">mediaTypeSelect</locator>
+
         <locator type="xpath" timeout="3" value="//input[@placeholder='请选择业务组']"  desc="">BusinessGroupSelect</locator>
         <!--<locator type="xpath" timeout="3" value="//span[text()='成都优易']"  desc="">BusinessGroupSelectCDYoue</locator>-->
 
-        <locator type="xpath" timeout="3" value="//input[@placeholder='请输入内容']"  desc="">dataSetNameInput</locator>
-        <locator type="xpath" timeout="3" value="//div[contains(text(),'下一步')]"  desc="">nextStep</locator>
+        <!--<locator type="xpath" timeout="3" value="//input[@placeholder='请输入内容']"  desc="">dataSetNameInput</locator>-->
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'数据集名称')]/../div/div/div/input"  desc="">dataSetNameInput</locator>
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'数据集名称')]"  desc="">dataSetName</locator>
+
+        <!--使用ftp时选择是否包含表头-->
+        <locator type="xpath" timeout="3" value="//span[text()='不包含表头']/../span/span"  desc="">notChooseTableHeader</locator>
+        <locator type="xpath" timeout="3" value="//span[text()='包含表头']/../span/span"  desc="">ChooseTableHeader</locator>
+
+        <locator type="xpath" timeout="3" value="//*[contains(text(),'下一步')]"  desc="">nextStep</locator>
+
+        <!--mysql时使用-->
         <locator type="xpath" timeout="3" value="//form/div/div/div[2]/input"  desc="">tabRulePrefix</locator>
         <locator type="xpath" timeout="3" value="//a[@class='confirm']"  desc="">confirmRule</locator>
+        <!--ftp时使用:自动建表配置页面-->
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'表名')]/../div/div/input"  desc="">tabName</locator>
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'字段长度')]/../div/div/input"  desc="">filedLength</locator>
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'字段类型')]/../div/div/div/input"  desc="">fieldTypeSelect</locator>
+        <locator type="xpath" timeout="3" value=".//*[@id='app']/section/section/main/div[3]/div/div[2]/div/form/div[4]/div/button"  desc="">confirmButton</locator>
+        <locator type="xpath" timeout="3" value=".//*[@id='app']/section/section/main/div[2]/div[2]/div/main/div/div[3]/table/tbody/tr[2]/td[3]/div/div/div[1]/input"  desc="">changeNameTypeSelect</locator>
+        <locator type="xpath" timeout="3" value=".//*[@id='app']/section/section/main/div[2]/div[2]/div/main/div/div[3]/table/tbody/tr[2]/td[4]/div/div/input"  desc="">fieldLengthChangeInput</locator>
 
+        <!--ftp时不使用'保存'-->
         <locator type="xpath" timeout="3" value="//div[@class='submit' and text()='保存']"  desc="">saveButton</locator>
+
         <locator type="xpath" timeout="3" value="//div[@class='submit' and contains(text(),'提交')]"  desc="">submitButton</locator>
+
 
         <locator type="xpath" timeout="3" value="//label[contains(text(),'任务名称')]/../div/div/input"  desc="">taskNameInput</locator>
 
@@ -48,16 +75,17 @@
         <locator type="xpath" timeout="3" value="//span[text()='天']"  desc="">taskCycleSelectHour</locator>-->
 
         <locator type="xpath" timeout="3" value="//label[text()='起始时间']/../div/div/div/input"  desc="">startTimeInput</locator>
+        <locator type="xpath" timeout="3" value="//label[text()='起始时间']"  desc="">startTimeInputText</locator>
 
         <locator type="xpath" timeout="3" value="//label[text()='执行时间']/../div/div/input"  desc="">executeTimeInput</locator>
-        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div/div[1]/input"  desc="">amountConfigInput</locator>
-        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div/div[2]/input"  desc="">amountConfigInput2</locator>
+        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div[1]/div/div/div/input"  desc="">amountConfigInput</locator>
+        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div[3]/div/div/div/input"  desc="">amountConfigInput2</locator>
 
-        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div/div[3]/div/span/span/i"  desc="">amountUnitSelect</locator>
+        <locator type="xpath" timeout="3" value="//label[text()='写入量配置']/../div/div[5]/div/div/input"  desc="">amountUnitSelect</locator>
         <!--<locator type="xpath" timeout="3" value="//span[text()='条']"  desc="">amountUnitSelectTiao</locator>
         <locator type="xpath" timeout="3" value="//span[text()='个']"  desc="">amountUnitSelectGe</locator>-->
 
-        <locator type="xpath" timeout="3" value="//label[text()='报错']/../div/div/div/div/span/span"  desc="">errorSelect</locator>
+        <locator type="xpath" timeout="3" value="//label[text()='报错']/../div/div/div/div/div/div/input"  desc="">errorSelect</locator>
         <!--<locator type="xpath" timeout="3" value="//span[text()='5']"  desc="">errorSelect5</locator>
         <locator type="xpath" timeout="3" value="//span[text()='4']"  desc="">errorSelect4</locator>
         <locator type="xpath" timeout="3" value="//span[text()='3']"  desc="">errorSelect3</locator>

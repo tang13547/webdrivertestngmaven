@@ -6,8 +6,10 @@ import com.youe.cd.test.util.action.ElementAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static com.youe.cd.test.controller.TestBase.driver;
+
 public class SearchWebService {
-	public static void searchWeb(WebDriver driver) throws Exception {
+	public static void searchWeb() throws Exception {
 	    driver.findElement(By.id("kw")).click();
 	    driver.findElement(By.id("kw")).clear();
 	    driver.findElement(By.id("kw")).sendKeys("pplive");
@@ -20,7 +22,7 @@ public class SearchWebService {
 	    driver.findElement(By.linkText("pplive_百度百科")).click();
 	    Thread.sleep(12000); 
 	   	    	    
-	    ElementAction.switchToLastWindow(driver);
+	    ElementAction.switchToLastWindow();
 	    
 	    //Thread.sleep(5000);
 	    //Assert.assertEquals(driver.getTitle(), "聚力视频_百度百科");

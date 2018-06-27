@@ -20,7 +20,7 @@ public class ModelAController extends TestBase {
 			Thread.sleep(5000);
 			String homeHandle = driver.getWindowHandle();
 			
-			SearchWebService.searchWeb(driver);			
+			SearchWebService.searchWeb();
 			//Assert.assertEquals(driver.getTitle(), "聚力视频_百度百科ch");
 			Verify.verifyEquals(driver.getTitle(), "聚力视频_百度百科ch");  //断言之后如还要代码要执行，第一步：由Assert->Verify
 			logger.info("[logger] 验证title结束");
@@ -40,7 +40,7 @@ public class ModelAController extends TestBase {
 	public void runtestSearchWebByTxtWithoutLogin() {
 		try {
 			String searchKey = TxtDao.getTxtList(Config.txtFilePath).get(0);
-			ParamSearchWebService.paramSearchWeb(driver, searchKey);
+			ParamSearchWebService.paramSearchWeb(searchKey);
 			logger.info("[logger] testcase2 testing...");
 			Assert.assertEquals(driver.getTitle(), "ppaa_百度搜索ch");
 			//Verify.verifyError();  //第二步：在代码最后，通过errorBuffer抛出断言失败AssertionError异常(错误)

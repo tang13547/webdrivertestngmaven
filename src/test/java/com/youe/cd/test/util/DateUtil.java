@@ -30,7 +30,7 @@ public class DateUtil {
 
     public static String getDateLiteEssential() {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("MMddHHmmss");
+        SimpleDateFormat sdf = new SimpleDateFormat("ddHHmmss");
         //System.out.println("Current date is: " + sdf.format(date));
 
         return sdf.format(date);

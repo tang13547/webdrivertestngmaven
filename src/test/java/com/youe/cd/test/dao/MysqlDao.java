@@ -10,7 +10,7 @@ import java.util.Map;
 public class MysqlDao {
     //Map<String, String> dbConnMap = getDBConnMap();
 
-    public static Map<String, String> getDBConnMap() {
+    /*public static Map<String, String> getDBConnMap() {
         Map<String, String> dbConnMap = new HashMap<String, String>(); //重要：使用这种方式初初化
 
         dbConnMap.put("dbDriver", Config.DB_DRIVER);
@@ -19,7 +19,7 @@ public class MysqlDao {
         dbConnMap.put("dbPassword", Config.DB_PASSWORD);
 
         return dbConnMap;
-    }
+    }*/
 
 
     //@Test

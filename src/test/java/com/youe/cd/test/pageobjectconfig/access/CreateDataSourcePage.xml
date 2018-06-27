@@ -27,7 +27,12 @@
 
         <locator type="xpath" timeout="3" value="//label[contains(text(),'数据源名称')]/../div/div/input"  desc="">DSName</locator>
         <locator type="xpath" timeout="3" value="//label[contains(text(),'数据源描述')]/../div/div/textarea"  desc="">DSDescription</locator>
+        <!--关系型数据库-MYSQL或ORACLE时使用-->
         <locator type="xpath" timeout="3" value="//label[contains(text(),'JDBC URL')]/../div/div/input"  desc="">JDBCUrl</locator>
+        <!--半结构化存储-FTP时使用-->
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'URL地址')]/../div/div/input"  desc="">UrlAddress</locator>
+        <locator type="xpath" timeout="3" value="//label[contains(text(),'端口')]/../div/div/input"  desc="">port</locator>
+
         <locator type="xpath" timeout="3" value="//label[contains(text(),'用户名')]/../div/div/input"  desc="">JDBCUserName</locator>
         <locator type="xpath" timeout="3" value="//label[contains(text(),'密码')]/../div/div/input"  desc="">JDBCPassword</locator>
         <locator type="xpath" timeout="3" value="//div[text()='测试连通性']"  desc="">testConnection</locator>

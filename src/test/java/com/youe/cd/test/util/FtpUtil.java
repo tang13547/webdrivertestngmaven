@@ -56,9 +56,10 @@ public class FtpUtil {
             inputStream = new FileInputStream(new File(originfilename));
             initFtpClient();
             ftpClient.setFileType(ftpClient.BINARY_FILE_TYPE);
-            CreateDirecroty(pathname);
+            //CreateDirecroty(pathname);
             ftpClient.makeDirectory(pathname);
             ftpClient.changeWorkingDirectory(pathname);
+            ftpClient.enterLocalPassiveMode(); //新增加
             ftpClient.storeFile(fileName, inputStream);
             inputStream.close();
             ftpClient.logout();
@@ -271,6 +272,42 @@ public class FtpUtil {
             //切换FTP目录
             ftpClient.changeWorkingDirectory(pathname);
             ftpClient.dele(filename);
+            ftpClient.logout();
+            flag = true;
+            System.out.println("删除文件成功");
+        } catch (Exception e) {
+            System.out.println("删除文件失败");
+            e.printStackTrace();
+        } finally {
+            if(ftpClient.isConnected()){
+                try{
+                    ftpClient.disconnect();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        return flag;
+    }
+
+    public boolean deleteFile(String pathname){
+        boolean flag = false;
+        try {
+            System.out.println("开始删除文件");
+            initFtpClient();
+            //切换FTP目录
+            ftpClient.changeWorkingDirectory(pathname);
+            //使用ftpClient.enterLocalPassiveMode();
+            // 是为了每次数据连接之前，ftp client告诉ftp server
+            // 开通一个端口来传输数据，避免使用ftpClient.listFiles();函数获取不到参数
+            ftpClient.enterLocalPassiveMode();
+            FTPFile [] files = ftpClient.listFiles();
+            for(FTPFile file:files) {
+                System.out.println(file.getName());
+                if (file.isFile()) {
+                    ftpClient.dele(file.getName());
+                }
+            }
             ftpClient.logout();
             flag = true;
             System.out.println("删除文件成功");

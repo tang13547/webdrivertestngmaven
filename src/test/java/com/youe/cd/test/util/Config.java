@@ -2,9 +2,10 @@ package com.youe.cd.test.util;
 
 import org.openqa.selenium.By;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import static com.youe.cd.test.dao.MysqlDao.getDBConnMap;
+//import static com.youe.cd.test.dao.MysqlDao.getDBConnMap;
 
 public class Config {
 
@@ -35,13 +36,21 @@ public class Config {
 	public static final String DB_USERNAME = "root";
 	public static final String DB_PASSWORD = "1qaz@WSX";
 
-	public static final Map<String, String> dbConnMap = getDBConnMap();
+	//public static final Map<String, String> dbConnMap = getDBConnMap();
+	public static final Map<String, String> dbConnMap;
+	static {
+		dbConnMap = new HashMap<String, String>();
+		dbConnMap.put("dbDriver", Config.DB_DRIVER);
+		dbConnMap.put("dbUrl", Config.DB_URL);
+		dbConnMap.put("dbUserName", Config.DB_USERNAME);
+		dbConnMap.put("dbPassword", Config.DB_PASSWORD);
+	}
 
 	//使用cookie登录配置
-	public static final String cookieName = "BAIDUID";
+	/*public static final String cookieName = "BAIDUID";
 	public static final String cookieValue = "56A7F56A88C2384696566954F4C441E7:FG=1";
 	public static final String cookieName2 = "BDUSS";
 	public static final String cookieValue2 = "2h4Ty02aFBvNTZ0Q0pCbUkwS1c3MUdyV25SQnVkWG9rVnVwTnFIa1lPeTQ4dTlaSUFBQUFBJCQAAAAAAAAAAAEAAAAZnv4vY2VyYWludGFuZzEyMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALhlyFm4ZchZU";
-	
+	*/
 	
 }

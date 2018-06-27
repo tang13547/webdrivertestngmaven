@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="MyTestSuite1" parallel="classes" thread-count="2">
+<suite name="MyTestSuite1" parallel="classes" thread-count="1">
   <!--<test verbose="2" name="TestTwoCases">
     <classes>
       <class name="com.youe.cd.test.webdriverdemotestng.run.RuntestParamCsv"/>
@@ -29,7 +29,8 @@
   <test name="TestOtherCases2">
   	<parameter name="testBrowser" value="${testBrowser}" /> <!-- 重写覆盖上面的testBrowser值,可以自定义一个具体的值，如firefox等 -->
     <classes>
-      <class name="com.youe.cd.test.controller.modela.M2mController" />
+        <class name="com.youe.cd.test.controller.modela.M2mController" />
+        <class name="com.youe.cd.test.controller.modela.Ftp2mController" />
     </classes>
   </test>
   

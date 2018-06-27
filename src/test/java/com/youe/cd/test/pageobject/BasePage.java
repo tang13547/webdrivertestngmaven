@@ -1,5 +1,6 @@
 package com.youe.cd.test.pageobject;
 
+import com.youe.cd.test.controller.TestBase;
 import com.youe.cd.test.util.Locator;
 import com.youe.cd.test.util.Locator.ByType;
 import com.youe.cd.test.util.XmlReadUtil;
@@ -14,7 +15,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BasePage {
+public class BasePage extends TestBase {
 
 	//protected 只在本包之内有权限，可访问
 	//protected  WebDriver driver;
@@ -126,7 +127,7 @@ public class BasePage {
 		return by;
 	}*/
 
-	public WebElement getElement(WebDriver driver, String locatorName) {
+	public WebElement getElement(String locatorName) {
 		WebElement element = null;
 
 		By by = getByByLocatorName(locatorName);
