@@ -5,7 +5,8 @@ import com.youe.cd.test.service.access.AccessService;
 import com.youe.cd.test.service.datasource.DataSourceService;
 import com.youe.cd.test.util.DateUtil;
 import com.youe.cd.test.util.FtpUtil;
-import com.youe.cd.test.util.RunTimeConfig;
+import com.youe.cd.test.util.config.Config;
+import com.youe.cd.test.util.config.RunTimeConfig;
 import com.youe.cd.test.util.action.ElementAction;
 import com.youe.cd.test.util.action.WebTest;
 import com.youe.cd.test.util.action.WebTestDaaS;
@@ -14,8 +15,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Ftp2mController extends TestBase {
-    String nowTimeStr = DateUtil.getDateLiteEssential();
-    String dataSourceName = "源F" + nowTimeStr;
+    //String nowTimeStr = DateUtil.getDateLiteEssential();
+    //String dataSourceName = "源F" + nowTimeStr;
 
     DataSourceService dataSourceService = new DataSourceService();
     AccessService accessService = new AccessService();
@@ -25,9 +26,9 @@ public class Ftp2mController extends TestBase {
         try {
             WebTestDaaS.goToDataSourceManagementPage();
 
-            dataSourceService.createDataSource(driver, "半结构化存储", "FTP", dataSourceName, RunTimeConfig.FTPConnMap);
+            dataSourceService.createDataSource(driver, "半结构化存储", "FTP", RunTimeConfig.dataSourceNameFtp, Config.FTPConnMap);
 
-            boolean actualElement= ElementAction.isElementPresent(By.xpath("//div[text()='" + dataSourceName + "']"));
+            boolean actualElement= ElementAction.isElementPresent(By.xpath("//div[contains(text(),'" + RunTimeConfig.dataSourceNameFtp + "')]"));
 
             Assert.assertTrue(actualElement);
 
@@ -39,10 +40,10 @@ public class Ftp2mController extends TestBase {
 
     @Test(priority = 2, enabled = true, description = "ftp到表流程")
     public void runTestFtp2mflow() {
-        String nowTimeEssential = DateUtil.getDateLiteEssential();
-        String dataSetName = "UI集_" + nowTimeEssential;
-        String taskName = "uitaskm2m_" + nowTimeEssential;
-        String tabName = "tab" + nowTimeEssential;
+        //String nowTimeEssential = DateUtil.getDateLiteEssential();
+        //String dataSetName = "UI集_" + nowTimeEssential;
+        //String taskName = "uitaskm2m_" + nowTimeEssential;
+        String tabName = "tab" + RunTimeConfig.nowTimeEssential;
 
         try {
             //准备上传FTP测试文件
@@ -53,10 +54,10 @@ public class Ftp2mController extends TestBase {
 
             WebTestDaaS.goToTaskManagementPage();
 
-            accessService.createTaskFlow("FTP", dataSourceName, "test2/subftp","txt",",","MYSQL", dataSetName, tabName, "12", "int");
-            accessService.configTask(taskName, "日");
+            accessService.createTaskFlow("FTP", RunTimeConfig.dataSourceNameFtp, "test2/subftp","txt",",","MYSQL", RunTimeConfig.dataSetNameF2M, tabName, "12", "int");
+            accessService.configTask(RunTimeConfig.taskNameF2M, "日");
 
-            WebTestDaaS.goToMetaManagementEditPageViewData(dataSetName);
+            WebTestDaaS.goToMetaManagementEditPageViewData(RunTimeConfig.dataSetNameF2M);
 
             //String actualNum = driver.findElement(By.xpath("//header[contains(text(),'行数：')]/span")).getText();
             String actualNum = driver.findElement(By.xpath("//header[contains(text(),'行数：')]/span")).getText();

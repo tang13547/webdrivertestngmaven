@@ -1,10 +1,9 @@
 package com.youe.cd.test.dao;
 
-import com.youe.cd.test.util.Config;
+import com.youe.cd.test.util.config.Config;
 import org.testng.annotations.Test;
 
 import java.sql.*;
-import java.util.HashMap;
 import java.util.Map;
 
 public class MysqlDao {

@@ -21,7 +21,7 @@ public class AccessService {
      * @param tabRulePrefix
      * @throws Exception
      */
-    public void createTaskFlow(String dataSourceName, String dataSetName, String tabRulePrefix) throws Exception {
+    public void createTaskFlow(String dataSourceName, String dataSetName,String testtable, String tabRulePrefix) throws Exception {
         //CreateTaskPage createTaskPage = new CreateTaskPage();
 
         createTaskPage.getElement("addTaskButton").click();
@@ -40,7 +40,7 @@ public class AccessService {
         createTaskPage.getElement("confirmDS").click();
         Thread.sleep(5000);
 
-        ElementAction.clickByDivTextWithExternalPath("testtable", "../../td[1]");
+        ElementAction.clickByDivTextWithExternalPath(testtable, "../../td[1]");
         //driver.findElement(By.xpath("//div[contains(text(),'baidu_tieba_20000item')]")).findElement(By.xpath("./../../td[1]/div/label/span")).click();
         Thread.sleep(5000);
 

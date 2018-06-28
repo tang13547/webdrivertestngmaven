@@ -1,9 +1,8 @@
 package com.youe.cd.test.util.action;
 
 import com.youe.cd.test.pageobject.home.HomePage;
-import com.youe.cd.test.util.Config;
+import com.youe.cd.test.util.config.Config;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 //import static com.youe.cd.test.controller.TestBase.driver;
 

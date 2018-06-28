@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 //7 import static org.junit.Assert.*;
 import com.youe.cd.test.controller.TestBase;
 import com.youe.cd.test.dao.PoiExcelDao;
-import com.youe.cd.test.util.Config;
+import com.youe.cd.test.util.config.Config;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
@@ -19,19 +19,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions; //ChromeOptions类处理Chrome窗口上的yellow alarm
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.youe.cd.test.dao.CsvDao;
-import com.youe.cd.test.dao.EasyOcrDao;
-import com.youe.cd.test.dao.ExcelDao;
 import com.youe.cd.test.pageobject.login.LoginPage;
 
 //import jxl.Sheet;
-import org.apache.poi.ss.usermodel.*;
-
-import java.util.ArrayList;
 
 //import java.util.HashSet;
 import org.openqa.selenium.interactions.Actions; //使用Actions类处理moveToElement()
-import org.testng.Assert;
+
 
 public class WebTest extends TestBase {
   //private boolean acceptNextAlert = true;

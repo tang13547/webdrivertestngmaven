@@ -1,6 +1,6 @@
 package com.youe.cd.test.util.verify;
 
-import com.youe.cd.test.util.Config;
+import com.youe.cd.test.util.config.Config;
 import com.youe.cd.test.util.ScreenShotUtil;
 import com.youe.cd.test.util.listener.ScreenShotOnFailureListener;
 import org.openqa.selenium.WebDriver;

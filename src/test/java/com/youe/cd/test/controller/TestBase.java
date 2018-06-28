@@ -1,6 +1,6 @@
 package com.youe.cd.test.controller;
 
-import com.youe.cd.test.util.Config;
+import com.youe.cd.test.util.config.Config;
 import com.youe.cd.test.util.action.WebTest;
 import com.youe.cd.test.util.action.WebTestDaaS;
 import com.youe.cd.test.util.listener.ScreenShotOnFailureListener;

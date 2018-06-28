@@ -1,6 +1,6 @@
 package com.youe.cd.test.util.listener;
 
-import com.youe.cd.test.util.Config;
+import com.youe.cd.test.util.config.Config;
 import com.youe.cd.test.util.ScreenShotUtil;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;

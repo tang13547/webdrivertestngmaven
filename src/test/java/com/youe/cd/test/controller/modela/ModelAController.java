@@ -1,10 +1,10 @@
 package com.youe.cd.test.controller.modela; //申明本类文件所处的包位置
 
 //import org.apache.log4j.Logger;
-import com.youe.cd.test.util.*;
 import com.youe.cd.test.controller.TestBase;
 
 //import org.junit.*;
+import com.youe.cd.test.util.config.Config;
 import com.youe.cd.test.util.verify.Verify;
 import org.testng.*;
 import org.testng.annotations.*;

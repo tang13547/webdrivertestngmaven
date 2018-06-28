@@ -16,7 +16,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.youe.cd.test.pageobject.login.LoginPage;
-import com.youe.cd.test.util.Config;
 
 import cn.easyproject.easyocr.EasyOCR;
 import cn.easyproject.easyocr.ImageType;
