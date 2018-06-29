@@ -98,6 +98,36 @@ public class ActionAdaptor extends TestBase {
         }
 
     }
+
+    /**
+     * 创建任务页面：选择表
+     * @param
+     * @param text 下拉选择的text, 如："testtable"
+     * @param externalPath  后掊的额外路径，加选择创建任务过程中的选择表使用：../../td[1]
+     */
+    public static void clickBySpanTextWithExternalPath(String text, String externalPath) {
+        try {
+            String xpathStr = "//span[text()='" + text + "']/" + externalPath;
+
+            WebElement webElement = driver.findElement(By.xpath(xpathStr));
+
+            //Select select = new Select(webElement);
+
+            try {
+                //select.selectByVisibleText(text);
+                webElement.click();
+                logger.info("成功选择(click)下拉列表中的：" + text);
+            } catch (NoSuchElementException e) {
+                logger.info("找不到下拉值，选择下拉列表失败，Text为：" + text);
+                throw e;
+            }
+        } catch (NoSuchElementException e) {
+            logger.error("找不到(下拉列表)元素，选择下拉列表失败，Text为：" + text);
+            throw e;
+        }
+
+    }
+
     /**
      * 创建任务页面：选择表
      * @param

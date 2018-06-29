@@ -50,7 +50,7 @@ public class Config {
 	public static final String cookieValue2 = "2h4Ty02aFBvNTZ0Q0pCbUkwS1c3MUdyV25SQnVkWG9rVnVwTnFIa1lPeTQ4dTlaSUFBQUFBJCQAAAAAAAAAAAEAAAAZnv4vY2VyYWludGFuZzEyMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALhlyFm4ZchZU";
 	*/
 
-	//测试使用的FMysql源信息
+	//测试使用的Mysql源信息
 	public static final String MYSQL_JDBCURL = "172.16.0.161:3306/test1";  //previous: 192.168.30.237/test
 	public static final String MYSQL_USERNAME = "root";
 	public static final String MYSQL_PASSWORD = "123456";
