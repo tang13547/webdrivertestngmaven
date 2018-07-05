@@ -29,8 +29,9 @@
   <test name="TestOtherCases2">
   	<parameter name="testBrowser" value="${testBrowser}" /> <!-- 重写覆盖上面的testBrowser值,可以自定义一个具体的值，如firefox等 -->
     <classes>
-        <class name="com.youe.cd.test.controller.modela.M2mController" />
-        <class name="com.youe.cd.test.controller.modela.Ftp2mController" />
+        <!--<class name="com.youe.cd.test.controller.modela.M2mController" />
+        <class name="com.youe.cd.test.controller.modela.Ftp2mController" />-->
+        <class name="com.youe.cd.test.controller.modela.ModelAController" />
     </classes>
   </test>
   

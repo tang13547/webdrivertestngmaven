@@ -79,6 +79,23 @@ public class ElementAction extends BaseAction {
         driver.switchTo().defaultContent();
     }
 
+    public static boolean isContainsPageText(String pageText) {
+        try {
+            String allStr = driver.getPageSource();
+
+            if(allStr.indexOf(pageText)>0) {
+                logger.info("页面中包含：" + pageText);
+                return true;
+            } else {
+                logger.info("页面中不包含：" + pageText);
+                return false;
+            }
+        } catch (Exception e) {
+            logger.error("异常信息为：" + e);
+            return false;
+        }
+    }
+
     /**
      * 判断元素是否存在
      * @param

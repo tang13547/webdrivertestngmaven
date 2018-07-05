@@ -23,7 +23,7 @@ public class TestBase {
             WebTest.setUp(testEnv, testBrowser); //实现了将其它类中的方法传递给主类中的属性
             logger.info("[logger] 类：" + this.getClass().getName() + " 测试初使化driver完成...");
             //增加一个登陆的调用
-            WebTest.loginByExcel(Config.baseUrl, Config.excelFilePath);
+            //6WebTest.loginByExcel(Config.baseUrl, Config.excelFilePath);
             //WebTest.loginWithVerifyCode(driver, Config.baseUrl2);
             //WebTest.loginWithVerifyCodeByCsv(driver, Config.baseUrl2, Config.csvFilePath);
             //WebTest.loginWithVerifyCodeByExcel(driver, Config.baseUrl2, Config.excelFilePath);
@@ -43,14 +43,14 @@ public class TestBase {
 
     @AfterMethod
     public void testAfterMethod() {
-        WebTestDaaS.goToHomePage();
+        //6WebTestDaaS.goToHomePage();
     }
 
     @AfterClass
     public void tearDownTest() {
         try {
             //增加一个登出的调用
-            WebTest.logout();
+            //6WebTest.logout();
             //WebTest.logoutBaiduInSearchPage(driver);
             WebTest.tearDown();
         } catch (Exception e) {

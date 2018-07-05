@@ -4,6 +4,9 @@ package com.youe.cd.test.controller.modela; //申明本类文件所处的包位�
 import com.youe.cd.test.controller.TestBase;
 
 //import org.junit.*;
+import com.youe.cd.test.dao.PoiExcelDao;
+import com.youe.cd.test.pageobject.login.LoginPage;
+import com.youe.cd.test.util.action.ElementAction;
 import com.youe.cd.test.util.config.Config;
 import com.youe.cd.test.util.verify.Verify;
 import org.testng.*;
@@ -13,7 +16,7 @@ import com.youe.cd.test.dao.TxtDao;
 import com.youe.cd.test.service.modela.*;
 
 public class ModelAController extends TestBase {
-	@Test(priority = 1, enabled = true, description = "无登陆搜索")
+	@Test(priority = 1, enabled = false, description = "无登陆搜索")
 	public void runtestSearchWebWithoutLogin() {
 		try {
 			driver.get(Config.baseUrl);
@@ -36,7 +39,7 @@ public class ModelAController extends TestBase {
 				
 	}
 		
-	@Test(priority = 2, enabled = true, description = "无登陆通过Txt搜索")
+	@Test(priority = 2, enabled = false, description = "无登陆通过Txt搜索")
 	public void runtestSearchWebByTxtWithoutLogin() {
 		try {
 			String searchKey = TxtDao.getTxtList(Config.txtFilePath).get(0);
@@ -51,9 +54,26 @@ public class ModelAController extends TestBase {
 		}
 	}
 	
-	@Test(priority = 3, enabled = false)
-	public void tempTestMethod() {
+	@Test(dataProvider = "loginProvider", dataProviderClass = PoiExcelDao.class)
+	public void tempTestMethod(String username, String password) {
 		try {
+			System.out.println("开始ing...");
+			driver.get(Config.baseUrl);  //打开网页首页
+			Thread.sleep(5000);
+
+			LoginPage loginPage = new LoginPage();
+
+			loginPage.getElement("userName").clear();
+			loginPage.getElement("userName").sendKeys(username);
+
+			loginPage.getElement("password").clear();
+			loginPage.getElement("password").sendKeys(password);
+			Thread.sleep(5000);
+
+			loginPage.getElement("submit").click();
+			Thread.sleep(5000);
+
+			Assert.assertTrue(ElementAction.isContainsPageText("日均数据接入"));
 			
 		} catch (Exception e) {
 			//e.printStackTrace();

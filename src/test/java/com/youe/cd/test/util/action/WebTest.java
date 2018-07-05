@@ -159,19 +159,18 @@ public class WebTest extends TestBase {
 	    //loginPage.getUserNameElement(driver).clear();
 	    loginPage.getElement("userName").clear();
 	    //loginPage.getUserNameElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
-	    loginPage.getElement("userName").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
+	    loginPage.getElement("userName").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 0));
 	    
 	    //loginPage.getPasswordElement(driver).clear();
 	    loginPage.getElement("password").clear();
 	    //loginPage.getPasswordElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
-	    loginPage.getElement("password").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
+	    loginPage.getElement("password").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 0));
 	    
 	    //loginPage.getSubmitElement(driver).click();
 	    loginPage.getElement("submit").click();
 	    Thread.sleep(5000);
 	    
 }
-
   
   /*5public static void loginWithVerifyCodeByExcel(WebDriver driver,String baseUrl,String excelFilePath) throws Exception {
 	  	//Sheet excelSheet = null;
