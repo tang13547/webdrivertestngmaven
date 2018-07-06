@@ -52,7 +52,6 @@ public class ModelAController extends TestBase {
 	@AfterMethod
 	public void testAfterMethod() {
 		//6WebTestDaaS.goToHomePage();
-		System.out.println("aftermedhod 1");
 	}
 
 	@AfterClass
@@ -118,7 +117,8 @@ public class ModelAController extends TestBase {
 			
 		} catch (Exception e) {
 			//e.printStackTrace();
-			logger.error("[logger] 异常信息为：", e);
+			//logger.error("[logger] 异常信息为：", e);
+			WebTest.handleException(e);
 		}
 	}
 
