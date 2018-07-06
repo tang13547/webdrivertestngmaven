@@ -171,6 +171,31 @@ public class WebTest extends TestBase {
 	    Thread.sleep(5000);
 	    
 }
+
+	/**
+	 * 参数化登录时调用
+	 * @param username
+	 * @param password
+	 * @throws Exception
+	 */
+	public static void loginByExcel(String baseUrl, String username, String password) throws Exception {
+
+		driver.get(baseUrl);  //打开网页首页
+		Thread.sleep(5000);
+
+		LoginPage loginPage = new LoginPage();
+
+		loginPage.getElement("userName").clear();
+		loginPage.getElement("userName").sendKeys(username);
+
+		loginPage.getElement("password").clear();
+		loginPage.getElement("password").sendKeys(password);
+		Thread.sleep(2000);
+
+		loginPage.getElement("submit").click();
+		Thread.sleep(5000);
+
+	}
   
   /*5public static void loginWithVerifyCodeByExcel(WebDriver driver,String baseUrl,String excelFilePath) throws Exception {
 	  	//Sheet excelSheet = null;
