@@ -62,7 +62,8 @@
                 <version>2.7.1</version>
                 <configuration>
                 	<systemPropertyVariables>
-						<testEnvironment>${testEnv}</testEnvironment>
+						<!--<testEnvironment>${testEnv}</testEnvironment>-->
+						<testEnv>${testEnv}</testEnv>  <!--注意：标签名和变量名相同，否则无法传入参数-->
                 		<testBrowser>${testBrowser}</testBrowser>
 						<!--<propertyName>testEnv</propertyName>
 						<buildDirectory>${testEnv}</buildDirectory>
