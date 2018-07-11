@@ -6,6 +6,7 @@ import java.util.Map;
 //import static com.youe.cd.test.dao.MysqlDao.getDBConnMap;
 
 public class Config {
+	public static final String nodeURL = "http://192.168.30.185:4444/wd/hub/";  //selenium/hub地址
 
 	public static final String chromedriverPath = "./src/test/resources/driver/chromedriver.exe";
 	public static final String firefoxdriverPath = "./src/test/resources/driver/geckodriver.exe";

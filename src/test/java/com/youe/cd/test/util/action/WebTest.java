@@ -1,5 +1,6 @@
 package com.youe.cd.test.util.action;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 //7 import org.junit.*;
@@ -9,6 +10,7 @@ import com.youe.cd.test.dao.PoiExcelDao;
 import com.youe.cd.test.util.config.Config;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,34 +36,52 @@ public class WebTest extends TestBase {
 
   //@BeforeTest
   //@Parameters({"testEnv","testBrowser"}) //只需在最上层加入，此处不要
-  public static WebDriver setUp(String testEnv, String testBrowser) {  //必须返回 Webdriver,否则无法传递给主类中的属性
-	if(testBrowser.equals("firefox")) {
-		//ProfilesIni allProfiles =new ProfilesIni();
-		//FirefoxProfile profile = allProfiles.getProfile("SeleniumProfile"); //修改值为: SeleniumProfile
-		System.setProperty("webdriver.gecko.driver", Config.firefoxdriverPath);
-		driver = new FirefoxDriver(); //处理取消每日提醒加入了profile类对象
-		driver.manage().window().maximize(); //最大化窗口
-	} else if (testBrowser.equals("chrome")) {
-		System.setProperty("webdriver.chrome.driver", Config.chromedriverPath);
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments(new String[] {"-test-type"}); //去掉Chrome上的yellow alarm
-		options.addArguments(new String[] {"-start-maximized"}); //最大化窗口	
-		//options.setExperimentalOption("excludeSwitches","ignore-certificate-errors"); //此方法未验证通过
-		driver = new ChromeDriver(options);
-	} else if (testBrowser.equals("ie")) {
-		System.setProperty("webdriver.ie.driver", Config.iedriverPath);
-		DesiredCapabilities dc = DesiredCapabilities.internetExplorer();
-		dc.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-		dc.setCapability("ignoreProtectedModeSettings", true);
-		driver = new InternetExplorerDriver(dc);
-	} else {
-		logger.warn("设置testBrowser错误（要求为chrome/firefox/ie中的一个），系统将以默认testBrowser = chrome执行");
-		System.setProperty("webdriver.chrome.driver", Config.chromedriverPath);
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments(new String[] {"-test-type"}); //去掉Chrome上的yellow alarm
-		options.addArguments(new String[] {"-start-maximized"}); //最大化窗口
-		//options.setExperimentalOption("excludeSwitches","ignore-certificate-errors"); //此方法未验证通过
-		driver = new ChromeDriver(options);
+  public static WebDriver setUp(String testEnv, String testBrowser) throws Exception {  //必须返回 Webdriver,否则无法传递给主类中的属性
+	  System.out.println("当前testEnv is:" + testEnv);
+	  System.out.println("当前testBrowser is:" + testBrowser);
+	  if(testEnv.equals("test")) {
+		if (testBrowser.equals("firefox")) {
+			//ProfilesIni allProfiles =new ProfilesIni();
+			//FirefoxProfile profile = allProfiles.getProfile("SeleniumProfile"); //修改值为: SeleniumProfile
+			System.setProperty("webdriver.gecko.driver", Config.firefoxdriverPath);
+			driver = new FirefoxDriver(); //处理取消每日提醒加入了profile类对象
+			driver.manage().window().maximize(); //最大化窗口
+		} else if (testBrowser.equals("chrome")) {
+			System.setProperty("webdriver.chrome.driver", Config.chromedriverPath);
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments(new String[]{"-test-type"}); //去掉Chrome上的yellow alarm
+			options.addArguments(new String[]{"-start-maximized"}); //最大化窗口
+			//options.setExperimentalOption("excludeSwitches","ignore-certificate-errors"); //此方法未验证通过
+			driver = new ChromeDriver(options);
+		} else if (testBrowser.equals("ie")) {
+			System.setProperty("webdriver.ie.driver", Config.iedriverPath);
+			DesiredCapabilities dc = DesiredCapabilities.internetExplorer();
+			dc.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			dc.setCapability("ignoreProtectedModeSettings", true);
+			driver = new InternetExplorerDriver(dc);
+		} else {
+			logger.warn("设置testBrowser错误（要求为chrome/firefox/ie中的一个），系统将以默认testBrowser = chrome执行");
+			System.setProperty("webdriver.chrome.driver", Config.chromedriverPath);
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments(new String[]{"-test-type"}); //去掉Chrome上的yellow alarm
+			options.addArguments(new String[]{"-start-maximized"}); //最大化窗口
+			//options.setExperimentalOption("excludeSwitches","ignore-certificate-errors"); //此方法未验证通过
+			driver = new ChromeDriver(options);
+		}
+	} else if (testEnv.equals("testnode")) {
+		if (testBrowser.equals("firefox")) {
+			DesiredCapabilities capabilities= DesiredCapabilities.firefox();
+			capabilities.setBrowserName("firefox");
+			capabilities.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(new URL(Config.nodeURL), capabilities);
+		} else if (testBrowser.equals("chrome")) {
+			//DesiredCapabilities dc = DesiredCapabilities.chrome();
+			//dc.setBrowserName("chrome");
+			//dc.setVersion("58.0.3029.81");
+			//dc.setPlatform(Platform.LINUX);
+			DesiredCapabilities dc = new DesiredCapabilities("chrome", "58.0.3029.81", Platform.LINUX);
+			driver = new RemoteWebDriver(new URL(Config.nodeURL), dc);
+		}
 	}
 	
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
