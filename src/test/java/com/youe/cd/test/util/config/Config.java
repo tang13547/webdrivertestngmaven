@@ -25,7 +25,8 @@ public class Config {
 	public static final String txtResultFilePath = "D:\\Tesseract-OCR\\train\\result"; //特别注意：没有加.txt文件后缀
 
 	//配置截图目录
-	public static final String screenShotPath = "E:\\screenshot\\testProject"; //截图目录（注意是目录）
+	//public static final String screenShotPath = "E:\\screenshot\\testProject"; //截图目录（注意是目录）
+	public static final String screenShotPath = "/opt/screenshot/testProject"; //截图目录（注意是目录）
 
 	//配置数据库连接信息
 	public static final String DB_DRIVER = "com.mysql.jdbc.Driver";

@@ -113,7 +113,7 @@ public class ModelAController extends TestBase {
 			System.out.println("开始ing...");
 			WebTest.loginByExcel(Config.baseUrl, username, password);
 
-			Assert.assertTrue(ElementAction.isContainsPageText("日均数据接入"));
+			Assert.assertTrue(ElementAction.isContainsPageText("日均数据接入ch"));
 			
 		} catch (Exception e) {
 			//e.printStackTrace();
