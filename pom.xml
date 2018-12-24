@@ -16,7 +16,7 @@
 	</properties>
 
 	<distributionManagement>
-		<repository>
+		<!--<repository>
 			<id>releases</id>
 			<name>User Project Release</name>
 			<url>http://172.16.0.249:8081/nexus/content/repositories/releases/</url>
@@ -25,7 +25,7 @@
 			<id>snapshots</id>
 			<name>User Project SNAPSHOTS</name>
 			<url>http://172.16.0.249:8081/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
+		</snapshotRepository>-->
 		<site>
 			<id>website</id>
 			<url>scp://webhost.company.com/www/website</url>
@@ -82,7 +82,7 @@
                         <suiteXmlFile>${xmlFileName}</suiteXmlFile>
                     </suiteXmlFiles>
                     <!-- 使用reportng美化testng报告的相关配置，即关闭默认监听，开启两个reportng的监听 -->
-                    <properties>
+                    <!--<properties>
                     	<property>
 	                        <name>usedefaultlisteners</name>
 	                        <value>false</value>
@@ -91,7 +91,7 @@
 	                        <name>listener</name>                      
 	                        <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
 	                    </property>
-                	</properties>
+                	</properties>-->
                 	<!--<workingDirectory>target/</workingDirectory>
                 	<forkMode>always</forkMode>-->
                 </configuration>                    
@@ -159,11 +159,11 @@
 	  <version>3.5.3</version>
 	</dependency>
 	
-	<dependency>
+	<!--<dependency>
       <groupId>net.sourceforge.javacsv</groupId>
       <artifactId>javacsv</artifactId>
       <version>2.1</version>
-	</dependency>
+	</dependency>-->
 
 	  <!--xml相关的jar包:dom4j-->
 	  <dependency>
@@ -192,7 +192,7 @@
     </dependency>
     
     <!-- reportNg的依赖包 关联testNg，对testng原生报告的美化-->
-    <dependency>
+    <!--<dependency>
          <groupId>org.uncommons</groupId>
          <artifactId>reportng</artifactId>
          <version>1.1.5</version>
@@ -203,14 +203,14 @@
                  <artifactId>testng</artifactId>
              </exclusion>
          </exclusions>
-     </dependency>
+     </dependency>-->
      
      <!-- 使用处理乱码的修改版的reportng时，必须要增加此修改版的velocity包依赖 -->
-     <dependency>
+     <!--<dependency>
      	<groupId>org.apache.velocity</groupId>
     	<artifactId>velocity</artifactId>
     	<version>1.7dep</version>     	
-     </dependency>
+     </dependency>-->
      
      <!-- 依赖guice包，为reportng的依赖包？ -->
      <dependency>
@@ -329,6 +329,14 @@
 		  <artifactId>commons-net</artifactId>
 		  <version>3.6</version>
 	  </dependency>
+
+	  <!--java-client for Appium Mobile Webdriver. 注意：使用appium时就不用selenium-server了，否则依赖包会冲突 -->
+	  <!--<dependency>
+		  <groupId>io.appium</groupId>
+		  <artifactId>java-client</artifactId>
+		  <version>5.0.0-BETA9</version>
+	  </dependency>-->
+
 
   </dependencies>   
 </project>
