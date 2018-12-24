@@ -20,8 +20,8 @@
   
   <!-- 关闭默认监听，开启新的监听for reportng -->
   <listeners>
-      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+      <!--<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>-->
       <!--测试失败时自动截图listener-->
       <listener class-name="com.youe.cd.test.util.listener.ScreenShotOnFailureListener"/>
   </listeners>
@@ -30,8 +30,9 @@
   	<parameter name="testBrowser" value="${testBrowser}" /> <!-- 重写覆盖上面的testBrowser值,可以自定义一个具体的值，如firefox等 -->
     <classes>
         <!--<class name="com.youe.cd.test.controller.modela.M2mController" />
-        <class name="com.youe.cd.test.controller.modela.Ftp2mController" />-->
-        <class name="com.youe.cd.test.controller.modela.ModelAController" />
+        <class name="com.youe.cd.test.controller.modela.Ftp2mController" />
+        <class name="com.youe.cd.test.controller.modela.ModelAController" />-->
+        <class name="com.youe.cd.test.controller.modela.ControlTaskController" />
     </classes>
   </test>
   
