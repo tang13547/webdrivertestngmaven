@@ -341,7 +341,7 @@ public class ElementAction extends BaseAction {
         wait.until(pageLoad);
     }
 
-    public static void executeJS(WebDriver driver, String js) {
+    public static void executeJS(String js) {
         ((JavascriptExecutor) driver).executeScript(js);
         System.out.println("执行JS脚本："+js);
 
