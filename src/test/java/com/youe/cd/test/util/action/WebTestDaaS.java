@@ -17,7 +17,7 @@ public class WebTestDaaS extends WebTest {
      * @param
      */
     public static void goToHomePage() {
-        driver.get(Config.baseUrl2);
+        driver.get(Config.homeUrl);
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

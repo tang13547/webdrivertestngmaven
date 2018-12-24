@@ -259,6 +259,11 @@ public class ElementAction extends BaseAction {
         actions.moveToElement(driver.findElement(by)).perform();
     }
 
+    public static void moveToElement(WebElement element) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+    }
+
     /**
      * 鼠标悬停操作
      * @param

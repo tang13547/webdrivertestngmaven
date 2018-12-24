@@ -6,7 +6,7 @@
     另外注意，页面名字是头个单词大写；例如主页：名字定义为 net.hk515.PageObject.HomePage
     Value：页面对象的URL，可不填。
     Desc:页面对象中文描述-->
-    <page pagename="com.youe.cd.test.pageobject.home.HomePage" value="" desc="DaaS Home页面">
+    <page pagename="com.youe.cd.test.pageobject.home.HomePage" value="" desc="Home页面(登录成功后的页面)">
         <!--管理一个页面的元素（webelement：input,select,textare,a,li等标签），一个page包含多个locator对象
         Type：定位方式，包含id,name,class,linktext,xpath,css等，定位元素的时候灵活使用，一般可以统一用xpath
         代替id,name,class，linktext的定位方式。
@@ -15,7 +15,7 @@
         需要填写正确的xpath语法格式。
         Desc:元素的描述，元素的中文描述信息-->
         <!--<locator type="xpath" timeout="3" value="/html/body/section/section/div/form/div[1]/div/div[1]/input"  desc="账户名">userLogin</locator>-->
-        <locator type="xpath" timeout="3" value="//*[@id='115']"  desc="数据接入链接图标">dataAccessIcon</locator>
+        <locator type="xpath" timeout="3" value="html/body/div[1]/section/div[2]/div/ul/li[5]/a/img"  desc="安全维稳系统">stabilityIcon</locator>
 
     </page>
 </map>

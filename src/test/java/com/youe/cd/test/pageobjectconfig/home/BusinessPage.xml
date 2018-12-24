@@ -25,5 +25,12 @@
         <locator type="xpath" timeout="3" value="//ul[not(contains(@style,'display: none'))]/li[contains(text(),'编辑')]"  desc="元数据页面的编辑">metaDataEdit</locator>
         <locator type="xpath" timeout="3" value="//div[text()='数据查看']"  desc="">metaDataView</locator>
 
+
+        <!--安全维稳menu页面-->
+        <locator type="xpath" timeout="3" value="html/body/section/div[1]/header/div[2]/ul/li[4]/div"  desc="">keyPersonnelControl</locator>
+        <locator type="xpath" timeout="3" value="html/body/div[2]/ul/li[2]/a"  desc="管控任务管理">controlTaskManagement</locator>
+
+
+
     </page>
 </map>

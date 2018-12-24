@@ -131,4 +131,11 @@ public class PoiExcelDao {
         return obj;
     }
 
+    //数据驱动
+    @DataProvider(name="macProvider")
+    public static Object[][] macProvider() {
+        Object[][] obj = getExcelObject(Config.macExcelFilePath);
+        return obj;
+    }
+
 }

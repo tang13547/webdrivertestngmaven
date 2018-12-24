@@ -12,11 +12,12 @@ public class Config {
 	public static final String firefoxdriverPath = "./src/test/resources/driver/geckodriver.exe";
 	public static final String iedriverPath = "./src/test/resources/driver/IEDriverServer.exe";
 	
-	public static final String baseUrl = "http://192.168.30.231:8000/#/";
-	public static final String baseUrl2 = baseUrl + "login"; //临时测试使用
+	public static final String baseUrl = "http://192.168.10.61:8088";
+	public static final String homeUrl = baseUrl + "/#/home"; //临时测试使用
 	public static final String txtFilePath = "./src/test/resources/data/data.txt"; //前面必须加。 表示路径从工程开始
 	public static final String csvFilePath = "./src/test/resources/data/csvdata.csv";
-	public static final String excelFilePath = "./src/test/resources/data/logindata.xls";
+	public static final String excelFilePath = "./src/test/resources/data/logindata/logindata.xls";
+	public static final String macExcelFilePath = "./src/test/resources/data/stabilitydata/1000mac.xlsx";
 	public static final String errorHintStr = "验证码输入有误"; //输入错误验证后的提示
 	
 	//Tesseract-OCR处理生成图片路径及转换成txt结果路径配置

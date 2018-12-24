@@ -2,7 +2,7 @@ package com.youe.cd.test.dao;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import com.csvreader.CsvReader;
+//import com.csvreader.CsvReader;
 
 public class CsvDao {
 	/**
@@ -11,7 +11,7 @@ public class CsvDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public static ArrayList<String[]> getCsvList(String csvFilePath) throws Exception {
+	/*public static ArrayList<String[]> getCsvList(String csvFilePath) throws Exception {
 	    ArrayList<String[]> csvList = new ArrayList<String[]>();
 	    CsvReader reader = new CsvReader(csvFilePath,',',Charset.forName("SJIS"));
 	    reader.readHeaders(); // 跳过表头,如果需要表头的话，不要写这句
@@ -22,6 +22,6 @@ public class CsvDao {
 	    reader.close();
 	    
 	    return csvList;
-	}
+	}*/
 
 }

@@ -18,6 +18,9 @@ public class RunTimeConfig {
     public static String dataSetNameF2M = "FM集_" + nowTimeEssential;
     public static String taskNameF2M = "FM" + nowTimeEssential;
 
+    //安全维稳
+    public static String controlTaskName = "布控taskn人消失" + nowTimeStr;
+
     public RunTimeConfig() {
     }
 

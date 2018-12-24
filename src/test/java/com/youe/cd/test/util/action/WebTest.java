@@ -173,6 +173,7 @@ public class WebTest extends TestBase {
 	 	    
 	    driver.get(baseUrl);  //打开网页首页
 	    //driver.findElement(By.xpath(".//*[@id='u1']/a[7]")).click();
+	  	Thread.sleep(3000);
 
 	    LoginPage loginPage = new LoginPage();
 
@@ -180,11 +181,13 @@ public class WebTest extends TestBase {
 	    loginPage.getElement("userName").clear();
 	    //loginPage.getUserNameElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 1));
 	    loginPage.getElement("userName").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 0, 0));
+	    Thread.sleep(1000);
 	    
 	    //loginPage.getPasswordElement(driver).clear();
 	    loginPage.getElement("password").clear();
 	    //loginPage.getPasswordElement(driver).sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 1));
 	    loginPage.getElement("password").sendKeys(PoiExcelDao.getCellContent(excelFilePath, 1, 0));
+	    Thread.sleep(1000);
 	    
 	    //loginPage.getSubmitElement(driver).click();
 	    loginPage.getElement("submit").click();
