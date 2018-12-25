@@ -37,6 +37,9 @@ public class JS {
 
         System.out.println("readyState is: " + ((JavascriptExecutor)driver).executeScript("return document.readyState").toString());
 
+        ((JavascriptExecutor)driver).executeScript("alert(\"This is your js alert!\")");
+        Thread.sleep(3000);
+
         // 在页面上直接执行js
         //((JavascriptExecutor)driver).executeScript("$('#tooltip').fadeOut();");
         //Thread.sleep(1000);
