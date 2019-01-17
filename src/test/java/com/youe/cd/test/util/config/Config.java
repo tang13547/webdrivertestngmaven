@@ -12,7 +12,7 @@ public class Config {
 	public static final String firefoxdriverPath = "./src/test/resources/driver/geckodriver.exe";
 	public static final String iedriverPath = "./src/test/resources/driver/IEDriverServer.exe";
 	
-	public static final String baseUrl = "http://192.168.10.61:8088";
+	public static final String baseUrl = "https://www.126.com/";
 	public static final String homeUrl = baseUrl + "/#/home"; //临时测试使用
 	public static final String txtFilePath = "./src/test/resources/data/data.txt"; //前面必须加。 表示路径从工程开始
 	public static final String csvFilePath = "./src/test/resources/data/csvdata.csv";

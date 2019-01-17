@@ -5,10 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Assert;
 
-public class SimpleDemo {
-    public static void main(String[] args) throws InterruptedException {
+import java.util.concurrent.TimeUnit;
+
+public class Timeout {
+    public static void main(String[] args) {
         System.out.println("srart selenium");
 
         System.setProperty("webdriver.chrome.driver", Config.chromedriverPath);
@@ -17,15 +18,18 @@ public class SimpleDemo {
         options.addArguments(new String[]{"-start-maximized"}); //最大化窗口
         WebDriver driver = new ChromeDriver(options);
 
+        //页面加载超时时间设置为5s
+        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+
         driver.get("http://www.baidu.com/"); //打开百度页面
 
-        driver.findElement(By.id("kw")).sendKeys("selenium java");
-        Thread.sleep(3000);
-        driver.findElement(By.id("su")).click();
-        Thread.sleep(3000);
+        //定位对象时给10s 的时间, 如果10s 内还定位不到则抛出异常
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.id("kw33")).sendKeys("selenium");
 
-        //Assert.assertEquals("1", "2", "看到此条信息，证明实际值和期望值不相等");
+        //异步脚本的超时时间设置成3s
+        driver.manage().timeouts().setScriptTimeout(3, TimeUnit.SECONDS);
 
-        driver.close();
+        driver.quit();
     }
 }

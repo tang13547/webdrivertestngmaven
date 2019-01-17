@@ -62,7 +62,9 @@ public class M2mController extends TestBase {
             WebTestDaaS.goToMetaManagementEditPageViewData(RunTimeConfig.getDataSetNameM2M());
 
             String actualNum = driver.findElement(By.xpath("//header[contains(text(),'行数：')]/span")).getText();
+
             Assert.assertEquals(actualNum, "4");
+            //Assert.assertEquals(actualNum, "4", "如果打印此消息，证明实际值与期望值不相等");
 
         } catch (Exception e) {
             //e.printStackTrace();

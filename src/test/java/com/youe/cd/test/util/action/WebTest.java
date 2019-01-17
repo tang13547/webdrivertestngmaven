@@ -265,6 +265,12 @@ public class WebTest extends TestBase {
 		Thread.sleep(3000);
 	}
 
+	public static void logoutMail() throws Exception {
+
+		driver.findElement(By.xpath(".//*[@id='_mail_component_35_35']/a")).click();
+		Thread.sleep(3000);
+	}
+
   /*//搜索，再打开链接页面中的登出
   public static void logoutBaidu(WebDriver driver) throws Exception {
 	  Actions a = new Actions(driver);	

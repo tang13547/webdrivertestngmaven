@@ -31,8 +31,9 @@
     <classes>
         <!--<class name="com.youe.cd.test.controller.modela.M2mController" />
         <class name="com.youe.cd.test.controller.modela.Ftp2mController" />
-        <class name="com.youe.cd.test.controller.modela.ModelAController" />-->
-        <class name="com.youe.cd.test.controller.modela.ControlTaskController" />
+        <class name="com.youe.cd.test.controller.modela.ModelAController" />
+        <class name="com.youe.cd.test.controller.modela.ControlTaskController" />-->
+        <class name="com.youe.cd.test.controller.modeldemo.LoginMailController" />
     </classes>
   </test>
   

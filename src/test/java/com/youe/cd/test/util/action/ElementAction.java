@@ -68,14 +68,14 @@ public class ElementAction extends BaseAction {
      * 切换frame/iframe框架
      * @param by  元素定位by
      */
-    public void switchToFrame(By by) {
+    public static void switchToFrame(By by) {
         WebElement frameElement = driver.findElement(by);
         driver.switchTo().frame(frameElement);
     }
     /**
      * 切回默认窗口框架
      */
-    public void switchToDefaultFrame() {
+    public static void switchToDefaultFrame() {
         driver.switchTo().defaultContent();
     }
 
